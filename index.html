@@ -705,6 +705,7 @@ function selectDay(ds){
     // Save occupied slots for conflict detection
     var occ = daySlots.filter(function(s){ return s.tipo!=='bloqueado'; });
     cs._occ = occ;
+
     document.getElementById('alertOk').style.display='none';
     document.getElementById('btnBook').className='btn-book-slot';
     cs._occ=daySlots;
