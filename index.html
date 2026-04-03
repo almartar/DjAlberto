@@ -719,6 +719,15 @@ function selectDay(ds){
   document.getElementById('calSidebar').scrollIntoView({behavior:'smooth',block:'nearest'});
 }
 
+function isHourBlocked(h, occ) {
+  var hn = h2n(h);
+  return occ.some(function(o) {
+    var oS=h2n(o.horaInicio), oE=h2n(o.horaFin);
+    if(oE<=oS) oE+=24;
+    return hn>=oS && hn<oE;
+  });
+}
+
 function onStartChange(){
   var sv=document.getElementById('cli_start').value; if(!sv) return;
   var sn=h2n(sv); var hours=genH();
