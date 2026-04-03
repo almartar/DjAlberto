@@ -1,0 +1,914 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DJ Alberto Marti - Bodas, Eventos y Clubs - Valencia</title>
+<meta name="description" content="DJ Alberto Marti especialista en bodas, eventos privados y clubs en Valencia. Solicita presupuesto.">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@300;400;600;700&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+:root{
+  --black:#000;--white:#fff;--gold:#c9a84c;
+  --red:#e63030;--green:#00c864;--blue:#3b82f6;
+  --muted:rgba(255,255,255,.45);--line:rgba(255,255,255,.1);
+  --bg2:#0a0a0a;--bg3:#111;
+}
+html{scroll-behavior:smooth;}
+body{font-family:'Montserrat',sans-serif;background:var(--black);color:var(--white);overflow-x:hidden;}
+*,*::before,*::after{box-sizing:border-box;}
+
+/* HERO */
+#hero{position:relative;height:100vh;min-height:600px;display:flex;align-items:flex-start;overflow:hidden;}
+.hero-bg{position:absolute;inset:0;background:linear-gradient(to right,rgba(0,0,0,.85) 30%,rgba(0,0,0,.2) 100%) center top/cover no-repeat;filter:grayscale(100%);transition:filter 6s;}
+#hero:hover .hero-bg{filter:grayscale(80%);}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,transparent 55%,#000 100%);}
+.hero-content{position:relative;z-index:2;padding:60px 60px 0;}
+.hero-pre{font-size:.68em;letter-spacing:6px;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:8px;opacity:0;animation:fadeUp .8s .3s forwards;}
+.hero-name{font-family:'Bebas Neue',sans-serif;font-size:clamp(4.5em,11vw,10em);line-height:.9;letter-spacing:3px;opacity:0;animation:fadeUp .8s .5s forwards;}
+.hero-name span{color:var(--gold);}
+.hero-sub{font-size:.72em;letter-spacing:3px;text-transform:uppercase;color:var(--muted);font-weight:300;margin-top:14px;opacity:0;animation:fadeUp .8s .7s forwards;}
+.hero-cta{margin-top:32px;opacity:0;animation:fadeUp .8s .9s forwards;display:flex;gap:14px;flex-wrap:wrap;}
+.btn-gold{display:inline-block;padding:13px 36px;border:1px solid var(--gold);color:var(--gold);font-size:.72em;font-weight:700;letter-spacing:4px;text-transform:uppercase;text-decoration:none;cursor:pointer;background:transparent;transition:all .3s;}
+.btn-gold:hover{background:var(--gold);color:#000;}
+.btn-out{display:inline-block;padding:13px 36px;border:1px solid var(--line);color:var(--muted);font-size:.72em;font-weight:700;letter-spacing:4px;text-transform:uppercase;text-decoration:none;cursor:pointer;background:transparent;transition:all .3s;}
+.btn-out:hover{border-color:var(--white);color:var(--white);}
+
+/* NAV */
+nav{position:fixed;bottom:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:center;background:rgba(0,0,0,.93);backdrop-filter:blur(12px);border-top:1px solid var(--line);}
+nav a{padding:17px 26px;font-size:.62em;letter-spacing:3px;text-transform:uppercase;color:var(--muted);text-decoration:none;font-weight:600;transition:color .2s;border-right:1px solid var(--line);position:relative;}
+nav a:last-child{border-right:none;}
+nav a:hover,nav a.on{color:var(--white);}
+nav a.on::after{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--gold);}
+
+/* SECTIONS */
+.sec{padding:100px 60px;max-width:1200px;margin:0 auto;}
+.sec-label{font-size:.62em;letter-spacing:5px;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:14px;display:block;}
+.sec-title{font-family:'Bebas Neue',sans-serif;font-size:clamp(2.5em,6vw,5em);line-height:1;margin-bottom:16px;letter-spacing:2px;}
+.sec-div{width:50px;height:2px;background:var(--gold);margin-bottom:36px;}
+
+/* BIO */
+#bio-sec{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;}
+.bio-img{aspect-ratio:3/4;background:var(--bg3);overflow:hidden;}
+.bio-img img{width:100%;height:100%;object-fit:cover;object-position:center 20%;filter:grayscale(100%);transition:filter .5s;}
+.bio-img:hover img{filter:grayscale(100%);}
+.bio-ph{width:100%;height:100%;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:8px;background:linear-gradient(135deg,#0d0d0d,#1a1a1a);}
+.bio-ph span:first-child{font-family:'Bebas Neue',sans-serif;font-size:6em;color:rgba(255,255,255,.04);letter-spacing:4px;}
+.bio-ph span:last-child{font-size:.6em;letter-spacing:4px;color:var(--gold);text-transform:uppercase;}
+.bio-text p{color:var(--muted);line-height:1.9;font-size:.88em;font-weight:300;margin-bottom:18px;}
+.bio-tags{display:flex;flex-wrap:wrap;gap:8px;margin-top:28px;}
+.bio-tag{padding:5px 14px;border:1px solid var(--line);font-size:.62em;letter-spacing:2px;text-transform:uppercase;color:var(--muted);font-weight:600;}
+
+/* SERVICIOS */
+#svc-wrap{background:#060606;padding:100px 0;margin:0;}
+#svc-wrap .inner{max-width:1200px;margin:0 auto;padding:0 60px;}
+.svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);margin-top:50px;}
+.svc{background:#060606;padding:48px 38px;transition:background .3s;}
+.svc:hover{background:#0c0c0c;}
+.svc-icon{font-size:2em;margin-bottom:18px;display:block;}
+.svc-title{font-family:'Bebas Neue',sans-serif;font-size:1.8em;letter-spacing:2px;margin-bottom:10px;}
+.svc-desc{color:var(--muted);font-size:.8em;line-height:1.75;font-weight:300;}
+
+/* CALENDARIO */
+#cal-sec{background:var(--bg2);}
+#cal-sec .sec{padding-bottom:120px;}
+.cal-container{margin-top:32px;border:1px solid var(--line);background:#050505;}
+.cal-top{display:flex;align-items:center;justify-content:space-between;padding:20px 24px;border-bottom:1px solid var(--line);flex-wrap:wrap;gap:12px;}
+.cal-top-left{display:flex;align-items:center;gap:14px;}
+.cal-month-label{font-family:'Bebas Neue',sans-serif;font-size:1.8em;letter-spacing:3px;}
+.cal-nav-btns{display:flex;gap:4px;}
+.cal-nav-btns button{background:transparent;border:1px solid var(--line);color:var(--white);width:32px;height:32px;cursor:pointer;font-size:.9em;transition:all .2s;}
+.cal-nav-btns button:hover{border-color:var(--gold);color:var(--gold);}
+.cal-today-btn{padding:6px 14px;background:transparent;border:1px solid var(--line);color:var(--muted);font-family:'Montserrat',sans-serif;font-size:.62em;letter-spacing:2px;text-transform:uppercase;cursor:pointer;transition:all .2s;}
+.cal-today-btn:hover{border-color:var(--gold);color:var(--gold);}
+.cal-legend-top{display:flex;gap:16px;flex-wrap:wrap;}
+.cal-legend-item{display:flex;align-items:center;gap:6px;font-size:.62em;letter-spacing:1px;text-transform:uppercase;color:var(--muted);}
+.cal-legend-dot{width:8px;height:8px;border-radius:50%;}
+.cal-weekdays{display:grid;grid-template-columns:repeat(7,1fr);border-bottom:1px solid var(--line);}
+.cal-wd{text-align:center;padding:10px;font-size:.6em;letter-spacing:2px;text-transform:uppercase;color:var(--muted);font-weight:600;}
+.cal-grid{display:grid;grid-template-columns:repeat(7,1fr);}
+.cal-cell{min-height:90px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);padding:8px;position:relative;transition:background .15s;cursor:pointer;}
+.cal-cell:nth-child(7n){border-right:none;}
+.cal-cell:hover:not(.cal-empty):not(.cal-past){background:rgba(255,255,255,.025);}
+.cal-cell.cal-empty{cursor:default;background:rgba(0,0,0,.3);}
+.cal-cell.cal-past{opacity:.35;cursor:default;}
+.cal-cell.cal-today .cal-dn{background:var(--gold);color:#000;border-radius:50%;width:26px;height:26px;display:flex;align-items:center;justify-content:center;}
+.cal-cell.cal-selected{background:rgba(201,168,76,.07);outline:1px solid rgba(201,168,76,.35);}
+.cal-dn{font-size:.85em;font-weight:600;margin-bottom:6px;width:26px;height:26px;display:flex;align-items:center;justify-content:center;}
+.cal-cell.cal-weekend .cal-dn{color:var(--gold);}
+.cal-occ-dot{font-size:.58em;letter-spacing:.5px;color:var(--red);padding:2px 0;}
+.cal-cell.cal-blocked{background:rgba(230,48,48,.06);cursor:not-allowed;}
+.cal-cell.cal-blocked .cal-dn{color:var(--red);}
+.cal-cell.cal-blocked::after{content:"NO DISP.";font-size:.45em;letter-spacing:1px;color:rgba(230,48,48,.5);display:block;text-align:center;margin-top:2px;}
+
+/* SIDEBAR */
+.cal-sidebar{display:none;border-top:1px solid var(--line);padding:28px;background:#030303;}
+.cal-sidebar.visible{display:block;}
+.cal-sidebar-date{font-family:'Bebas Neue',sans-serif;font-size:1.6em;letter-spacing:2px;margin-bottom:22px;}
+.cal-sidebar-slot{display:flex;align-items:center;justify-content:space-between;padding:11px 14px;border:1px solid var(--line);margin-bottom:8px;font-size:.8em;gap:12px;}
+.slt-time{font-weight:600;letter-spacing:1px;}
+.slt-note{font-size:.75em;color:var(--muted);letter-spacing:.5px;}
+.slt-btn-del{padding:5px 12px;border:none;background:rgba(230,48,48,.15);color:var(--red);font-family:'Montserrat',sans-serif;font-size:.7em;font-weight:700;letter-spacing:1px;text-transform:uppercase;cursor:pointer;transition:opacity .2s;}
+.slt-btn-del:hover{opacity:.75;}
+
+/* ADMIN FORM */
+.add-slot-form{background:var(--bg3);border:1px solid var(--line);padding:20px;margin-bottom:20px;}
+.add-slot-title{font-size:.62em;letter-spacing:3px;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:14px;}
+.asl-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px;}
+.asl-g label{font-size:.6em;letter-spacing:2px;text-transform:uppercase;color:var(--muted);font-weight:600;display:block;margin-bottom:5px;}
+.asl-g input,.asl-g select{width:100%;background:#0a0a0a;border:1px solid var(--line);color:var(--white);padding:9px 12px;font-family:'Montserrat',sans-serif;font-size:.82em;outline:none;-webkit-appearance:none;}
+.asl-g input:focus,.asl-g select:focus{border-color:var(--gold);}
+.asl-g select option{background:#111;}
+.btn-add{width:100%;background:var(--gold);color:#000;border:none;padding:11px;font-family:'Montserrat',sans-serif;font-size:.7em;font-weight:700;letter-spacing:3px;text-transform:uppercase;cursor:pointer;transition:opacity .2s;margin-top:6px;}
+.btn-add:hover{opacity:.85;}
+
+/* CLIENT TIME PICKER */
+.time-picker-wrap{padding:4px 0;}
+.time-picker-label{font-size:.62em;letter-spacing:3px;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:16px;}
+.time-picker-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:14px;}
+.tpg label{font-size:.6em;letter-spacing:2px;text-transform:uppercase;color:var(--muted);font-weight:600;display:block;margin-bottom:5px;}
+.tpg select{width:100%;background:#0a0a0a;border:1px solid var(--line);color:var(--white);padding:10px 12px;font-family:'Montserrat',sans-serif;font-size:.85em;outline:none;-webkit-appearance:none;cursor:pointer;}
+.tpg select:focus{border-color:var(--gold);}
+.tpg select option{background:#111;}
+.alert-conflict{display:none;font-size:.75em;color:var(--red);padding:10px 14px;border:1px solid rgba(230,48,48,.3);background:rgba(230,48,48,.05);margin-bottom:12px;letter-spacing:.5px;}
+.alert-ok{display:none;font-size:.75em;color:var(--green);padding:10px 14px;border:1px solid rgba(0,200,100,.2);background:rgba(0,200,100,.05);margin-bottom:12px;letter-spacing:.5px;}
+.btn-book-slot{width:100%;background:transparent;border:1px solid var(--gold);color:var(--gold);padding:13px;font-family:'Montserrat',sans-serif;font-size:.72em;font-weight:700;letter-spacing:3px;text-transform:uppercase;cursor:pointer;transition:all .3s;display:none;}
+.btn-book-slot:hover{background:var(--gold);color:#000;}
+.btn-book-slot.show{display:block;}
+
+/* CONTACTO */
+#contacto .contact-wrap{display:grid;grid-template-columns:1fr 1fr;gap:80px;margin-top:36px;}
+.contact-info p{color:var(--muted);font-size:.85em;line-height:1.9;font-weight:300;margin-bottom:18px;}
+.contact-links{display:flex;flex-direction:column;gap:14px;margin-top:24px;}
+.contact-links a{color:var(--muted);text-decoration:none;font-size:.78em;letter-spacing:1px;display:flex;align-items:center;gap:12px;transition:color .2s;}
+.contact-links a:hover{color:var(--gold);}
+.contact-links .ic{color:var(--gold);}
+form{display:flex;flex-direction:column;gap:14px;}
+.fr{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+.fg{display:flex;flex-direction:column;gap:5px;}
+.fg label{font-size:.6em;letter-spacing:2px;text-transform:uppercase;color:var(--muted);font-weight:600;}
+.fg input,.fg select,.fg textarea{background:#0a0a0a;border:1px solid var(--line);color:var(--white);padding:13px 14px;font-family:'Montserrat',sans-serif;font-size:.85em;outline:none;-webkit-appearance:none;transition:border-color .2s;}
+.fg input:focus,.fg select:focus,.fg textarea:focus{border-color:var(--gold);}
+.fg select option{background:#111;}
+.fg textarea{resize:vertical;min-height:90px;}
+.btn-submit{background:var(--gold);color:#000;border:none;padding:15px;font-family:'Montserrat',sans-serif;font-size:.72em;font-weight:700;letter-spacing:4px;text-transform:uppercase;cursor:pointer;transition:opacity .2s;}
+.btn-submit:hover{opacity:.85;}
+.btn-submit:disabled{opacity:.4;cursor:not-allowed;}
+.form-msg{font-size:.78em;padding:11px 14px;margin-top:6px;display:none;}
+.form-msg.ok{background:rgba(0,200,100,.08);border:1px solid rgba(0,200,100,.25);color:var(--green);}
+.form-msg.err{background:rgba(230,48,48,.08);border:1px solid rgba(230,48,48,.25);color:var(--red);}
+
+/* FOOTER */
+footer{border-top:1px solid var(--line);padding:36px 60px;display:flex;align-items:center;justify-content:space-between;font-size:.62em;color:var(--muted);letter-spacing:2px;text-transform:uppercase;margin-bottom:56px;}
+footer .ft-name{font-family:'Bebas Neue',sans-serif;font-size:1.9em;letter-spacing:3px;color:var(--white);}
+
+/* TOAST */
+#toast{position:fixed;top:20px;right:20px;z-index:9999;padding:13px 22px;font-size:.78em;letter-spacing:1px;display:none;border-left:3px solid var(--gold);background:rgba(0,0,0,.96);color:var(--white);}
+
+/* UTILS */
+@keyframes fadeUp{from{opacity:0;transform:translateY(28px);}to{opacity:1;transform:none;}}
+.reveal{opacity:0;transform:translateY(36px);transition:opacity .7s,transform .7s;}
+.reveal.visible{opacity:1;transform:none;}
+.loader{color:var(--muted);text-align:center;padding:40px;font-size:.82em;letter-spacing:2px;}
+
+
+
+.dj-footer{border-top:1px solid var(--line);padding:24px 60px;display:flex;align-items:center;justify-content:space-between;font-size:.62em;color:var(--muted);letter-spacing:2px;text-transform:uppercase;margin-bottom:56px;flex-wrap:wrap;gap:12px;}
+.dj-footer .ft-name{font-family:'Bebas Neue',sans-serif;font-size:1.9em;letter-spacing:3px;color:var(--white);}
+.dj-footer-legal{display:flex;gap:16px;flex-wrap:wrap;}
+.dj-footer-legal a{color:var(--muted);text-decoration:underline;cursor:pointer;transition:color .2s;}
+.dj-footer-legal a:hover{color:var(--gold);}
+.dj-modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.92);z-index:1000;overflow-y:auto;padding:30px 20px;}
+.dj-modal-box{background:#0d0d0d;border:1px solid var(--line);border-radius:4px;max-width:640px;margin:0 auto;padding:32px;position:relative;}
+.dj-modal-box h2{font-family:'Bebas Neue',sans-serif;font-size:1.5em;letter-spacing:3px;color:var(--gold);margin-bottom:20px;}
+.dj-modal-box h3{font-family:'Bebas Neue',sans-serif;font-size:1em;letter-spacing:2px;color:var(--white);margin:16px 0 6px;}
+.dj-modal-box p{font-size:.82em;color:var(--muted);line-height:1.7;margin-bottom:10px;}
+.dj-modal-close{position:absolute;top:16px;right:20px;cursor:pointer;color:var(--muted);font-size:1.4em;background:none;border:none;}
+.dj-modal-close:hover{color:var(--white);}
+.cookie-banner{display:none;position:fixed;bottom:56px;left:0;right:0;background:#0d0d0d;border-top:1px solid var(--line);padding:14px 24px;z-index:900;flex-wrap:wrap;gap:12px;}
+.cookie-banner p{font-size:.78em;color:var(--muted);margin:0;flex:1;min-width:200px;}
+.cookie-banner a{color:var(--gold);cursor:pointer;text-decoration:underline;}
+.cookie-banner-btns{display:flex;gap:8px;flex-shrink:0;}
+.cookie-banner-btns button{padding:8px 18px;border:none;font-family:'Montserrat',sans-serif;font-size:.7em;font-weight:700;letter-spacing:2px;text-transform:uppercase;cursor:pointer;}
+.btn-cookie-ok{background:var(--gold);color:#000;}
+.btn-cookie-no{background:transparent;border:1px solid var(--line)!important;color:var(--muted);}
+@media(max-width:768px){.dj-footer{padding:24px 20px;flex-direction:column;text-align:center;}}
+/* RESENAS */
+#resenas{background:#060606;padding:100px 0;margin:0;}
+#resenas .inner{max-width:1200px;margin:0 auto;padding:0 60px;}
+.resenas-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:40px;}
+.resena-card{background:#0d0d0d;border:1px solid var(--line);padding:28px;}
+.resena-stars{color:var(--gold);font-size:1.1em;margin-bottom:12px;}
+.resena-texto{color:var(--muted);font-size:.83em;line-height:1.8;font-style:italic;margin-bottom:18px;}
+.resena-autor{display:flex;align-items:center;gap:10px;}
+.resena-avatar{width:36px;height:36px;border-radius:50%;background:var(--gold);display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue',sans-serif;font-size:1em;color:#000;flex-shrink:0;}
+.resena-nombre{font-size:.8em;font-weight:700;color:var(--white);}
+.resena-evento{font-size:.7em;color:var(--muted);letter-spacing:1px;text-transform:uppercase;}
+.resena-empty{color:var(--muted);font-size:.85em;padding:40px 0;text-align:center;grid-column:1/-1;}
+.resena-form-wrap{margin-top:50px;background:#0a0a0a;border:1px solid var(--line);padding:32px;}
+.resena-form-title{font-family:'Bebas Neue',sans-serif;font-size:1.5em;letter-spacing:3px;color:var(--gold);margin-bottom:24px;}
+.star-picker{display:flex;gap:6px;margin-bottom:16px;flex-direction:row-reverse;justify-content:flex-end;}
+.star-picker input{display:none;}
+.star-picker label{font-size:1.8em;cursor:pointer;color:var(--line);transition:color .15s;}
+.star-picker input:checked ~ label,.star-picker label:hover,.star-picker label:hover ~ label{color:var(--gold);}
+.resena-admin-card{background:#0d0d0d;border:1px solid var(--line);padding:20px;margin-bottom:12px;display:flex;align-items:flex-start;gap:16px;justify-content:space-between;flex-wrap:wrap;}
+.resena-admin-info{flex:1;min-width:0;}
+.resena-admin-btns{display:flex;gap:8px;flex-shrink:0;}
+.btn-aprobar{padding:7px 14px;background:rgba(0,200,100,.15);color:var(--green);border:none;font-family:'Montserrat',sans-serif;font-size:.7em;font-weight:700;letter-spacing:1px;text-transform:uppercase;cursor:pointer;}
+.btn-rechazar{padding:7px 14px;background:rgba(230,48,48,.15);color:var(--red);border:none;font-family:'Montserrat',sans-serif;font-size:.7em;font-weight:700;letter-spacing:1px;text-transform:uppercase;cursor:pointer;}
+@media(max-width:768px){.resenas-grid{grid-template-columns:1fr;}}
+@media(max-width:768px){
+  .sec{padding:70px 20px;}
+  .hero-content{padding:36px 20px 0;}
+  .hero-name{font-size:4em;}
+  #bio-sec{grid-template-columns:1fr;gap:36px;}
+  .svc-grid{grid-template-columns:1fr;}
+  #contacto .contact-wrap{grid-template-columns:1fr;gap:40px;}
+  .fr,.asl-row,.time-picker-grid{grid-template-columns:1fr;}
+  nav a{padding:13px 12px;font-size:.56em;letter-spacing:1.5px;}
+  footer{flex-direction:column;gap:10px;text-align:center;padding:30px 20px;}
+  #svc-wrap .inner{padding:0 20px;}
+}
+</style>
+</head>
+<body>
+<div id="toast"></div>
+
+<!-- HERO -->
+<section id="home" style="padding:0;max-width:none;margin:0;">
+<div id="hero">
+  <div class="hero-bg" id="heroBg"></div>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <span class="hero-pre">Valencia, España</span>
+    <h1 class="hero-name">DJ<br><span>Alberto</span><br>Marti</h1>
+    <p class="hero-sub">Bodas &nbsp;·&nbsp; Eventos &nbsp;·&nbsp; Clubs</p>
+    <div class="hero-cta">
+      <a href="#contacto" class="btn-gold">Solicitar presupuesto</a>
+      <a href="#calendario" class="btn-out">Ver disponibilidad</a>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- BIO -->
+<div class="sec reveal" id="bio-wrap">
+<div id="bio-sec">
+  <div class="bio-img" style="position:relative;">
+    <div style="position:absolute;bottom:0;left:0;right:0;height:35%;background:linear-gradient(to top,#000 0%,transparent 100%);z-index:2;pointer-events:none;"></div>
+    <div class="bio-ph" id="bioWrap">
+      <span>AM</span><span>Sube tu foto aqui</span>
+    </div>
+  </div>
+  <div>
+    <span class="sec-label">Sobre mí</span>
+    <h2 class="sec-title">El artista<br>detrás<br>de la música</h2>
+    <div class="sec-div"></div>
+    <p>Antes de que existieran los CDJs, antes de que Spotify fuera ni una idea, yo ya estaba detrás de los aparatos — empezando con un radio cassette, grabando mezclas a mano, pasando luego al vinilo y sin parar hasta hoy. Con base en <strong style="color:var(--white)">Xàtiva (Valencia)</strong>, llevo décadas creando momentos que la gente recuerda mucho después de que la música pare.</p>
+    <p>Tengo una colección propia de cientos de vinilos de los 80 hasta los 2000, todos ripeados y organizados en una biblioteca digital propia. Mi especialidad es el <strong style="color:var(--gold)">Remember</strong>: Pop, House, Dance, Techno y Progressive de esa época dorada — y se nota la diferencia cuando quien pone la música la vivió de primera mano.</p>
+    <p>Cada evento es único. Me involucro con el cliente para construir la escena perfecta para ese momento tan especial, con el criterio y el oído de quien empezó a mezclar antes de que hubiera manual de instrucciones.</p>
+    <div class="bio-tags">
+      <span class="bio-tag" style="color:var(--gold);border-color:rgba(201,168,76,.4)">Remember</span>
+      <span class="bio-tag">Pop 80/90</span>
+      <span class="bio-tag">House</span>
+      <span class="bio-tag">Dance</span>
+      <span class="bio-tag">Techno</span>
+      <span class="bio-tag">Progressive</span>
+      <span class="bio-tag">Comercial</span>
+      <span class="bio-tag">Bodas</span>
+      <span class="bio-tag" style="border-color:rgba(255,255,255,.2)">&#127890; 🎵 Vinilo desde los 80</span>
+    </div>
+  </div>
+</div>
+</div>
+
+<!-- SERVICIOS -->
+<div id="svc-wrap">
+  <div class="inner">
+    <span class="sec-label reveal">Servicios</span>
+    <h2 class="sec-title reveal">Lo que ofrezco</h2>
+    <div class="svc-grid">
+      <div class="svc reveal"><span class="svc-icon">&#128141;</span><div class="svc-title">Bodas</div><p class="svc-desc">Desde el cocktail hasta el cierre de pista. Sets personalizados para el día más especial, incluyendo sesiones Remember si el público lo pide.</p></div>
+      <div class="svc reveal"><span class="svc-icon">&#127881;</span><div class="svc-title">Eventos</div><p class="svc-desc">Cumpleaños, comuniones, fiestas privadas y corporativas. Música a medida para cada ocasión.</p></div>
+      <div class="svc reveal"><span class="svc-icon">&#127911;</span><div class="svc-title">Clubs y Salas</div><p class="svc-desc">Residencias y sesiones puntuales. Energía constante y lectura precisa del público.</p></div>
+    </div>
+
+    <!-- REMEMBER HIGHLIGHT -->
+    <div style="margin-top:1px;background:linear-gradient(135deg,#0d0d0d,#111);border:1px solid rgba(201,168,76,.2);padding:40px 38px;display:grid;grid-template-columns:1fr 2fr;gap:40px;align-items:center;">
+      <div>
+        <div style="font-family:'Bebas Neue',sans-serif;font-size:3em;letter-spacing:3px;color:var(--gold);line-height:1;">Remember</div>
+        <div style="font-size:.65em;letter-spacing:3px;text-transform:uppercase;color:var(--muted);margin-top:6px;">Especialidad</div>
+      </div>
+      <div>
+        <p style="color:var(--muted);font-size:.82em;line-height:1.8;font-weight:300;">
+          Pop, House, Dance, Techno y Progressive de los <strong style="color:var(--white)">años 80 y 90</strong>. 
+          Una colección de miles de vinilos originales de esa época, todos ripeados en una biblioteca digital propia. 
+          Música que se siente diferente cuando quien la pone la vivió desde el principio.
+        </p>
+        <div style="display:flex;gap:10px;margin-top:16px;flex-wrap:wrap;">
+          <span style="padding:4px 12px;border:1px solid rgba(201,168,76,.3);font-size:.62em;letter-spacing:2px;text-transform:uppercase;color:var(--gold);">Años 80</span>
+          <span style="padding:4px 12px;border:1px solid rgba(201,168,76,.3);font-size:.62em;letter-spacing:2px;text-transform:uppercase;color:var(--gold);">Años 90</span>
+          <span style="padding:4px 12px;border:1px solid rgba(201,168,76,.3);font-size:.62em;letter-spacing:2px;text-transform:uppercase;color:var(--gold);">Años 2000</span>
+          <span style="padding:4px 12px;border:1px solid rgba(255,255,255,.1);font-size:.62em;letter-spacing:2px;text-transform:uppercase;color:var(--muted);">&#127890; Colección en vinilo</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CALENDARIO -->
+<div id="calendario">
+<div id="cal-sec">
+<div class="sec reveal">
+  <span class="sec-label">Disponibilidad</span>
+  <h2 class="sec-title">Consulta fechas<br>y horarios</h2>
+  <div class="sec-div"></div>
+  <p style="color:var(--muted);font-size:.82em;margin-bottom:24px;line-height:1.7;">
+    Haz click en cualquier día para elegir tu franja horaria y solicitar la fecha.
+    <span id="adminHint" style="color:var(--gold);cursor:pointer;margin-left:8px;display:none;font-size:.8em;letter-spacing:2px;" onclick="showAdmin()">&#183; ADMIN</span>
+  </p>
+  <div class="cal-container">
+    <div class="cal-top">
+      <div class="cal-top-left">
+        <div class="cal-nav-btns">
+          <button onclick="changeMonth(-1)">&#8592;</button>
+          <button onclick="changeMonth(1)">&#8594;</button>
+        </div>
+        <span class="cal-month-label" id="calMonthLabel"></span>
+        <button class="cal-today-btn" onclick="goToday()">Hoy</button>
+      </div>
+      <div class="cal-legend-top">
+        <div class="cal-legend-item"><div class="cal-legend-dot" style="background:var(--red)"></div>Horas ocupadas</div>
+        <div class="cal-legend-item"><div class="cal-legend-dot" style="background:rgba(255,255,255,.2)"></div>Disponible</div>
+      </div>
+    </div>
+    <div class="cal-weekdays">
+      <div class="cal-wd">Lun</div><div class="cal-wd">Mar</div><div class="cal-wd">Mié</div>
+      <div class="cal-wd">Jue</div><div class="cal-wd">Vie</div>
+      <div class="cal-wd" style="color:var(--gold)">Sáb</div>
+      <div class="cal-wd" style="color:var(--gold)">Dom</div>
+    </div>
+    <div class="cal-grid" id="calGrid"><div class="loader">Cargando...</div></div>
+    <div class="cal-sidebar" id="calSidebar">
+      <div class="cal-sidebar-date" id="sidebarDate"></div>
+      <!-- Admin: ver y anadir franjas ocupadas -->
+      <div id="adminView" style="display:none;">
+        <div class="add-slot-form">
+          <div class="add-slot-title">+ Marcar franja como ocupada</div>
+          <div class="asl-row">
+            <div class="asl-g"><label>Hora inicio</label><select id="asl_start"></select></div>
+            <div class="asl-g"><label>Hora fin</label><select id="asl_end"></select></div>
+          </div>
+          <div class="asl-g" style="margin-bottom:10px"><label>Notas internas</label><input type="text" id="asl_notas" placeholder="Ej: Boda Garcia..."></div>
+          <button class="btn-add" onclick="addSlot()">Guardar franja ocupada</button>
+        </div>
+        <div id="adminSlots"></div>
+      </div>
+      <!-- Cliente: elegir horario -->
+      <div id="clientView">
+        <div class="time-picker-wrap">
+          <div class="time-picker-label">Elige tu horario</div>
+          <div class="time-picker-grid">
+            <div class="tpg"><label>Hora inicio</label>
+              <select id="cli_start" onchange="onStartChange()"><option value="">Selecciona...</option></select>
+            </div>
+            <div class="tpg"><label>Hora fin</label>
+              <select id="cli_end" onchange="onEndChange()"><option value="">Primero elige inicio</option></select>
+            </div>
+          </div>
+          <div class="alert-conflict" id="alertConflict">&#9888; Ese horario ya está ocupado. Por favor elige otro.</div>
+          <div class="alert-ok" id="alertOk">&#10003; ✓ Horario disponible</div>
+          <button class="btn-book-slot" id="btnBook" onclick="confirmTime()">Solicitar este horario →</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+</div>
+
+<!-- CONTACTO -->
+<div id="contacto" class="sec reveal">
+  <span class="sec-label">Contacto</span>
+  <h2 class="sec-title">Hablemos de<br>tu evento</h2>
+  <div class="sec-div"></div>
+  <div class="contact-wrap">
+    <div class="contact-info">
+      <p>¿Tienes una fecha en mente? Cuéntame los detalles del evento a través del formulario y te respondo en menos de 24 horas.</p>
+      <p>Una vez revisada tu solicitud, me pondré en contacto contigo directamente por teléfono para hablar de todos los detalles y cerrar los flecos.</p>
+      <p style="color:var(--gold);font-size:.8em;margin-top:20px;letter-spacing:1px;">&#128222; Contacto telefónico tras revisar tu solicitud</p>
+    </div>
+    <form onsubmit="enviarSolicitud(event)">
+      <div class="fr">
+        <div class="fg"><label>Nombre *</label><input type="text" id="f_nombre" required placeholder="Tu nombre"></div>
+        <div class="fg"><label>Email *</label><input type="email" id="f_email" required placeholder="tu@email.com"></div>
+      </div>
+      <div class="fr">
+        <div class="fg"><label>Teléfono</label><input type="tel" id="f_tel" placeholder="+34 600 000 000"></div>
+        <div class="fg"><label>Fecha *</label><input type="date" id="f_fecha" required></div>
+      </div>
+      <div class="fr">
+        <div class="fg"><label>Hora inicio</label><input type="text" id="f_hi" placeholder="Ej: 19:00" readonly></div>
+        <div class="fg"><label>Hora fin</label><input type="text" id="f_hf" placeholder="Ej: 01:00" readonly></div>
+      </div>
+      <div class="fg">
+        <label>Tipo de evento *</label>
+        <select id="f_tipo" required>
+          <option value="">Selecciona...</option>
+          <option>Boda</option>
+          <option>Cumpleaños / Fiesta privada</option>
+          <option>Evento corporativo</option>
+          <option>Club / Sala</option>
+          <option>Comunión / Bautizo</option>
+          <option>Otro</option>
+        </select>
+      </div>
+      <div class="fg"><label>Localización</label><input type="text" id="f_lugar" placeholder="Ciudad, sala o espacio"></div>
+      <div class="fg"><label>Mensaje</label><textarea id="f_msg" placeholder="Estilo musical, horario, detalles..."></textarea></div>
+      <button type="submit" class="btn-submit" id="btnSubmit">Enviar solicitud</button>
+      <div class="form-msg" id="formMsg"></div>
+    </form>
+  </div>
+</div>
+
+<div id="resenas">
+  <div class="inner">
+    <span class="sec-label reveal">Opiniones</span>
+    <h2 class="sec-title reveal">Lo que dicen<br>mis clientes</h2>
+    <div class="sec-div"></div>
+    <div class="resenas-grid" id="resenasGrid"><div class="resena-empty">Cargando...</div></div>
+    <div class="resena-form-wrap reveal">
+      <div class="resena-form-title">Deja tu opinion</div>
+      <div class="fr" style="margin-bottom:14px;">
+        <div class="fg"><label>Tu nombre *</label><input type="text" id="r_nombre" placeholder="Nombre"></div>
+        <div class="fg"><label>Tipo de evento *</label>
+          <select id="r_evento"><option value="">Selecciona...</option><option>Boda</option><option>Cumpleanos</option><option>Evento corporativo</option><option>Club / Sala</option><option>Otro</option></select>
+        </div>
+      </div>
+      <div class="fg" style="margin-bottom:14px;"><label>Valoracion *</label>
+        <div class="star-picker">
+          <input type="radio" name="stars" id="s5" value="5"><label for="s5">&#9733;</label>
+          <input type="radio" name="stars" id="s4" value="4"><label for="s4">&#9733;</label>
+          <input type="radio" name="stars" id="s3" value="3"><label for="s3">&#9733;</label>
+          <input type="radio" name="stars" id="s2" value="2"><label for="s2">&#9733;</label>
+          <input type="radio" name="stars" id="s1" value="1"><label for="s1">&#9733;</label>
+        </div>
+      </div>
+      <div class="fg" style="margin-bottom:16px;"><label>Comentario *</label>
+        <textarea id="r_texto" placeholder="Cuentanos tu experiencia..." style="min-height:100px;background:#0a0a0a;border:1px solid var(--line);color:var(--white);padding:13px 14px;font-family:'Montserrat',sans-serif;font-size:.85em;outline:none;resize:vertical;width:100%;-webkit-appearance:none;transition:border-color .2s;"></textarea>
+      </div>
+      <button onclick="enviarResena()" class="btn-submit" id="btnResena" style="width:auto;padding:13px 36px;">Enviar opinion</button>
+      <div class="form-msg" id="resenaMsg"></div>
+    </div>
+    <div id="adminResenas" style="display:none;margin-top:40px;">
+      <div style="font-family:'Bebas Neue',sans-serif;font-size:1.4em;letter-spacing:3px;color:var(--gold);margin-bottom:20px;">Pendientes de aprobacion</div>
+      <div id="resenasPendientes"><p style="color:var(--muted);font-size:.82em;">Sin resenas pendientes.</p></div>
+    </div>
+  </div>
+</div>
+<footer class="dj-footer">
+  <div class="ft-name">DJ Alberto Marti</div>
+  <div class="dj-footer-legal">
+    <a onclick="document.getElementById('djAvisoModal').style.display='block'">Aviso Legal</a>
+    <a onclick="document.getElementById('djPrivModal').style.display='block'">Privacidad</a>
+    <a onclick="document.getElementById('djCookiesModal').style.display='block'">Cookies</a>
+    <a onclick="document.getElementById('djTycModal').style.display='block'">T&eacute;rminos</a>
+  </div>
+  <div>2025 &middot; Xàtiva, Valencia</div>
+</footer>
+
+<!-- AVISO LEGAL -->
+<div class="dj-modal-overlay" id="djAvisoModal" onclick="if(event.target===this)this.style.display='none'">
+  <div class="dj-modal-box">
+    <button class="dj-modal-close" onclick="document.getElementById('djAvisoModal').style.display='none'">&#10005;</button>
+    <h2>Aviso Legal</h2>
+    <h3>Titular</h3>
+    <p><strong>Titular:</strong> Alberto Mart&iacute;<br><strong>Domicilio:</strong> Xàtiva, Valencia<br><strong>Email:</strong> <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="d9b8b5bbbcabadb6a0b5acbab0b8ebe9e8e899beb4b8b0b5f7bab6b4">[email&#160;protected]</a></p>
+    <h3>Objeto</h3>
+    <p>Sitio web informativo sobre servicios de DJ de Alberto Mart&iacute; con formulario de contacto y solicitud de presupuesto.</p>
+    <h3>Propiedad intelectual</h3>
+    <p>Los contenidos del sitio son propiedad de Alberto Mart&iacute;. Prohibida su reproducci&oacute;n sin autorizaci&oacute;n.</p>
+    <h3>Legislaci&oacute;n aplicable</h3>
+    <p>Legislaci&oacute;n espa&ntilde;ola. Juzgados y Tribunales de Valencia.</p>
+  </div>
+</div>
+
+<!-- PRIVACIDAD -->
+<div class="dj-modal-overlay" id="djPrivModal" onclick="if(event.target===this)this.style.display='none'">
+  <div class="dj-modal-box">
+    <button class="dj-modal-close" onclick="document.getElementById('djPrivModal').style.display='none'">&#10005;</button>
+    <h2>Pol&iacute;tica de Privacidad</h2>
+    <p>En cumplimiento del RGPD y la LOPD, Alberto Mart&iacute; informa sobre el tratamiento de datos.</p>
+    <h3>Datos recogidos</h3>
+    <p>Nombre, email, tel&eacute;fono y mensaje (formulario de contacto). Nombre, evento y comentario (rese&ntilde;as).</p>
+    <h3>Finalidad</h3>
+    <p>Responder solicitudes de contrataci&oacute;n y gestionar el calendario. Las rese&ntilde;as aprobadas se publican con nombre y tipo de evento.</p>
+    <h3>Cesi&oacute;n a terceros</h3>
+    <p>Los datos no se ceden a terceros salvo obligaci&oacute;n legal.</p>
+    <h3>Derechos</h3>
+    <p>Acceso, rectificaci&oacute;n y supresi&oacute;n en: <strong><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="a2c3cec0c7d0d6cddbced7c1cbc390929393e2c5cfc3cbce8cc1cdcf">[email&#160;protected]</a></strong></p>
+  </div>
+</div>
+
+<!-- COOKIES -->
+<div class="dj-modal-overlay" id="djCookiesModal" onclick="if(event.target===this)this.style.display='none'">
+  <div class="dj-modal-box">
+    <button class="dj-modal-close" onclick="document.getElementById('djCookiesModal').style.display='none'">&#10005;</button>
+    <h2>Pol&iacute;tica de Cookies</h2>
+    <p>Este sitio usa cookies t&eacute;cnicas para mejorar la navegaci&oacute;n. No se usan cookies de seguimiento ni publicidad.</p>
+    <h3>Desactivaci&oacute;n</h3>
+    <p>Puedes configurar tu navegador para rechazarlas. Puede afectar al funcionamiento del sitio.</p>
+  </div>
+</div>
+
+<!-- TERMINOS -->
+<div class="dj-modal-overlay" id="djTycModal" onclick="if(event.target===this)this.style.display='none'">
+  <div class="dj-modal-box">
+    <button class="dj-modal-close" onclick="document.getElementById('djTycModal').style.display='none'">&#10005;</button>
+    <h2>T&eacute;rminos y Condiciones</h2>
+    <h3>1. Servicio</h3>
+    <p>DJ Alberto Mart&iacute; ofrece servicios de DJ para bodas, eventos privados y clubs en Valencia y alrededores.</p>
+    <h3>2. Confirmaci&oacute;n de reserva</h3>
+    <p>La solicitud web no implica reserva. La fecha queda confirmada mediante acuerdo escrito y pago de se&ntilde;al.</p>
+    <h3>3. Cancelaciones</h3>
+    <p>Cancelaciones con menos de 30 d&iacute;as de antelaci&oacute;n pueden conllevar p&eacute;rdida de la se&ntilde;al. Condiciones definitivas en contrato individual.</p>
+    <h3>4. Rese&ntilde;as</h3>
+    <p>Las rese&ntilde;as est&aacute;n sujetas a moderaci&oacute;n previa. Se reserva el derecho a no publicar contenidos ofensivos o falsos.</p>
+    <h3>5. Legislaci&oacute;n</h3>
+    <p>Legislaci&oacute;n espa&ntilde;ola. Juzgados de Valencia.</p>
+  </div>
+</div>
+
+<nav>
+  <a href="#home" class="on" onclick="setNav(this)">Home</a>
+  <a href="#bio-wrap" onclick="setNav(this)">Bio</a>
+  <a href="#svc-wrap" onclick="setNav(this)">Servicios</a>
+  <a href="#calendario" onclick="setNav(this)">Disponibilidad</a>
+  <a href="#contacto" onclick="setNav(this)">Contactar</a>
+</nav>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+var GAS_URL    = 'https://script.google.com/macros/s/AKfycbxlILj3qI2sLfXFOqLyGeSJ-adWvMbMwdZoOjiUpMaPpr7eIxZmqel1NthfDet1uHIJ6w/exec';
+var HERO_PHOTO = 'https://i.imgur.com/uH8LZW0.png';
+var BIO_PHOTO  = 'https://i.imgur.com/wvRoFS1.png';
+var ADMIN_PASS = 'dj2025';
+
+var G = { isAdmin:false, slots:[], selectedDate:null, curY:null, curM:null };
+var today = new Date();
+G.curY = today.getFullYear(); G.curM = today.getMonth();
+
+if (HERO_PHOTO) {
+  var hb = document.getElementById('heroBg');
+  hb.style.backgroundImage = "linear-gradient(to right, rgba(0,0,0,.95) 0%, rgba(0,0,0,.7) 30%, rgba(0,0,0,.1) 60%, rgba(0,0,0,.3) 100%), url('"+HERO_PHOTO+"')";
+  hb.style.backgroundSize = "cover";
+  hb.style.backgroundPosition = "center 15%";
+  hb.style.backgroundSize = "cover";
+  hb.style.backgroundPosition = "center 20%";
+}
+if (BIO_PHOTO) {
+  var bw=document.getElementById('bioWrap');
+  bw.innerHTML='<img src="'+BIO_PHOTO+'" alt="DJ Alberto Marti">';
+}
+
+// Admin oculto: click 5 veces en el logo DJ
+var cc=0;
+document.getElementById('hero') && document.getElementById('hero').addEventListener('click',function(){
+  cc++;
+  if(cc>=5){
+    cc=0;
+    showAdmin();
+  }
+});
+
+// GAS
+function gasCall(action,params){
+  if(!GAS_URL) return Promise.resolve({ok:true,slots:[],solicitudes:[],resenas:[]});
+  var payload = Object.assign({action:action}, params);
+  return fetch(GAS_URL, {
+    method: 'POST',
+    headers: {'Content-Type': 'text/plain'},
+    body: JSON.stringify(payload)
+  }).then(function(r){ return r.json(); });
+}
+
+// CALENDARIO
+var MONTHS=['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
+var MONTHSES=['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
+
+function loadSlots(){
+  gasCall('getDisponibilidad',{mes:G.curM+1,anio:G.curY}).then(function(r){
+    if(r.ok) G.slots=r.slots||[];
+    renderCal();
+  }).catch(function(){renderCal();});
+}
+
+function changeMonth(d){
+  G.curM+=d; if(G.curM>11){G.curM=0;G.curY++;} if(G.curM<0){G.curM=11;G.curY--;}
+  G.selectedDate=null; document.getElementById('calSidebar').className='cal-sidebar'; loadSlots();
+}
+function goToday(){
+  G.curY=today.getFullYear();G.curM=today.getMonth();G.selectedDate=null;
+  document.getElementById('calSidebar').className='cal-sidebar'; loadSlots();
+}
+
+function handleDayClick(el){
+  if(el.classList.contains('cal-past')||el.classList.contains('cal-empty')) return;
+  if(el.classList.contains('cal-blocked')&&!G.isAdmin){
+    toast('Este dia no esta disponible.');return;
+  }
+  var ds=el.getAttribute('data-date');
+  if(ds) selectDay(ds);
+}
+
+function renderCal(){
+  document.getElementById('calMonthLabel').textContent=MONTHS[G.curM]+' '+G.curY;
+  var grid=document.getElementById('calGrid'); var html='';
+  var fd=new Date(G.curY,G.curM,1).getDay(); var fm=fd===0?6:fd-1;
+  var dim=new Date(G.curY,G.curM+1,0).getDate();
+  for(var i=0;i<fm;i++) html+='<div class="cal-cell cal-empty"></div>';
+  for(var d=1;d<=dim;d++){
+    var ds=G.curY+'-'+String(G.curM+1).padStart(2,'0')+'-'+String(d).padStart(2,'0');
+    var cd=new Date(G.curY,G.curM,d);
+    var past=cd<new Date(today.getFullYear(),today.getMonth(),today.getDate());
+    var isT=d===today.getDate()&&G.curM===today.getMonth()&&G.curY===today.getFullYear();
+    var isW=cd.getDay()===0||cd.getDay()===6;
+    var isSel=ds===G.selectedDate;
+    var daySlots=G.slots.filter(function(s){return s.fecha===ds;});
+    var isBlocked = G.slots.some(function(s){ return s.fecha===ds && s.tipo==='bloqueado'; });
+    var cls='cal-cell'+(past?' cal-past':'')+(isT?' cal-today':'')+(isW?' cal-weekend':'')+(isSel?' cal-selected':'')+(isBlocked&&!G.isAdmin?' cal-blocked':'');
+    html+='<div class="'+cls+'" data-date="'+ds+'" onclick="handleDayClick(this)">';
+    html+='<div class="cal-dn">'+d+'</div>';
+    // Admin ve las franjas, cliente solo ve indicador
+    if(G.isAdmin && daySlots.length>0){
+      daySlots.forEach(function(s){
+        html+='<div class="cal-occ-dot" style="color:var(--red)">'+s.horaInicio+'-'+s.horaFin+'</div>';
+      });
+    } else if(!G.isAdmin && daySlots.length>0){
+      html+='<div class="cal-occ-dot">'+daySlots.length+' ocupad'+(daySlots.length>1?'as':'a')+'</div>';
+    }
+    html+='</div>';
+  }
+  grid.innerHTML=html;
+}
+
+// Horas
+function genH(){
+  var h=[];
+  for(var i=10;i<24;i++) h.push(String(i).padStart(2,'0')+':00');
+  for(var i=1;i<=6;i++) h.push(String(i).padStart(2,'0')+':00');
+  return h;
+}
+function h2n(h){var n=parseInt(h);return n<7?n+24:n;}
+
+function selectDay(ds){
+  G.selectedDate=ds; renderCal();
+  var p=ds.split('-');
+  document.getElementById('sidebarDate').textContent=parseInt(p[2])+' de '+MONTHSES[parseInt(p[1])-1]+' de '+p[0];
+  document.getElementById('f_fecha').value=ds;
+  var daySlots=G.slots.filter(function(s){return s.fecha===ds;});
+
+  if(G.isAdmin){
+    document.getElementById('adminView').style.display='block';
+    document.getElementById('clientView').style.display='none';
+    var hours=genH();
+    var ss=document.getElementById('asl_start'); var es=document.getElementById('asl_end');
+    ss.innerHTML=hours.map(function(h){return '<option>'+h+'</option>';}).join('');
+    es.innerHTML=hours.map(function(h){return '<option>'+h+'</option>';}).join('');
+    es.selectedIndex=2;
+    var html='';
+    if(daySlots.length===0){
+      html='<p style="color:var(--muted);font-size:.78em;padding:8px 0;">Sin franjas ocupadas en este día.</p>';
+    } else {
+      daySlots.forEach(function(s){
+        html+='<div class="cal-sidebar-slot"><div><div class="slt-time">'+s.horaInicio+' - '+s.horaFin+'</div>'
+          +(s.notas?'<div class="slt-note">'+s.notas+'</div>':'')
+      +'</div><button class="slt-btn-del" data-id="'+s.id+'" onclick="handleDelete(this)">Borrar</button></div>';
+      });
+    }
+    document.getElementById('adminSlots').innerHTML=html;
+  } else {
+    document.getElementById('adminView').style.display='none';
+    document.getElementById('clientView').style.display='block';
+    // Init client picker
+    var hours=genH();
+    var cs=document.getElementById('cli_start');
+    cs.innerHTML='<option value="">Selecciona hora inicio...</option>';
+    hours.forEach(function(h){cs.innerHTML+='<option>'+h+'</option>';});
+    document.getElementById('cli_end').innerHTML='<option value="">Primero elige inicio</option>';
+    document.getElementById('alertConflict').style.display='none';
+    document.getElementById('alertOk').style.display='none';
+    document.getElementById('btnBook').className='btn-book-slot';
+    cs._occ=daySlots;
+  }
+
+  document.getElementById('calSidebar').className='cal-sidebar visible';
+  document.getElementById('calSidebar').scrollIntoView({behavior:'smooth',block:'nearest'});
+}
+
+function onStartChange(){
+  var sv=document.getElementById('cli_start').value; if(!sv) return;
+  var sn=h2n(sv); var hours=genH();
+  var es=document.getElementById('cli_end');
+  es.innerHTML='<option value="">Selecciona hora fin...</option>';
+  hours.forEach(function(h){var diff=h2n(h)-sn;if(diff>0&&diff<=10)es.innerHTML+='<option>'+h+'</option>';});
+  document.getElementById('alertConflict').style.display='none';
+  document.getElementById('alertOk').style.display='none';
+  document.getElementById('btnBook').className='btn-book-slot';
+}
+
+function onEndChange(){
+  var sv=document.getElementById('cli_start').value;
+  var ev=document.getElementById('cli_end').value;
+  if(!sv||!ev) return;
+  var sn=h2n(sv),en=h2n(ev);
+  var occ=document.getElementById('cli_start')._occ||[];
+  var conflict=occ.some(function(o){return sn<h2n(o.horaFin)&&en>h2n(o.horaInicio);});
+  document.getElementById('alertConflict').style.display=conflict?'block':'none';
+  document.getElementById('alertOk').style.display=!conflict?'block':'none';
+  document.getElementById('btnBook').className='btn-book-slot'+(conflict?'':' show');
+}
+
+function confirmTime(){
+  var sv=document.getElementById('cli_start').value;
+  var ev=document.getElementById('cli_end').value;
+  if(!sv||!ev) return;
+  document.getElementById('f_hi').value=sv;
+  document.getElementById('f_hf').value=ev;
+  document.getElementById('contacto').scrollIntoView({behavior:'smooth'});
+  toast('Horario: '+sv+' - '+ev+' seleccionado');
+}
+
+function handleDelete(el){
+  var id=el.getAttribute('data-id');
+  if(id) deleteSlot(id);
+}
+
+function bloquearDia(){
+  if(!G.selectedDate) return;
+  // Check if already blocked
+  var yaBlocked = G.slots.some(function(s){ return s.fecha===G.selectedDate && s.tipo==='bloqueado'; });
+  if(yaBlocked){ toast('Este dia ya esta bloqueado'); return; }
+  if(!confirm('Bloquear el dia ' + G.selectedDate + ' completo? Los clientes no podran solicitar este dia.')) return;
+  var data={fecha:G.selectedDate,horaInicio:'00:00',horaFin:'23:59',tipo:'bloqueado',notas:'Dia bloqueado'};
+  gasCall('addDisponibilidad',{data:data}).then(function(r){
+    if(r.ok){
+      G.slots.push({id:r.id,fecha:data.fecha,horaInicio:'00:00',horaFin:'23:59',tipo:'bloqueado',notas:'Dia bloqueado'});
+      renderCal();selectDay(G.selectedDate);toast('Dia bloqueado correctamente');
+    } else toast('Error: '+r.error);
+  }).catch(function(){toast('Error de conexion');});
+}
+
+function addSlot(){
+  if(!G.selectedDate) return;
+  var data={fecha:G.selectedDate,horaInicio:document.getElementById('asl_start').value,
+    horaFin:document.getElementById('asl_end').value,tipo:'ocupado',
+    notas:document.getElementById('asl_notas').value};
+  gasCall('addDisponibilidad',{data}).then(function(r){
+    if(r.ok){
+      G.slots.push({id:r.id,fecha:data.fecha,horaInicio:data.horaInicio,horaFin:data.horaFin,tipo:'ocupado',notas:data.notas});
+      renderCal(); selectDay(G.selectedDate); toast('Franja guardada');
+      document.getElementById('asl_notas').value='';
+    } else toast('Error: '+r.error);
+  }).catch(function(){toast('Error de conexion');});
+}
+
+function deleteSlot(id){
+  if(!confirm('¿Borrar esta franja?')) return;
+  gasCall('deleteDisponibilidad',{id}).then(function(r){
+    if(r.ok){G.slots=G.slots.filter(function(s){return s.id!==id;});renderCal();selectDay(G.selectedDate);toast('Eliminado');}
+  });
+}
+
+// FORMULARIO
+function enviarSolicitud(e){
+  e.preventDefault();
+  var btn=document.getElementById('btnSubmit'); var msg=document.getElementById('formMsg');
+  btn.disabled=true; btn.textContent='Enviando...';
+  var data={
+    nombre:document.getElementById('f_nombre').value.trim(),
+    email:document.getElementById('f_email').value.trim(),
+    telefono:document.getElementById('f_tel').value.trim(),
+    fecha:document.getElementById('f_fecha').value,
+    horaInicio:document.getElementById('f_hi').value,
+    horaFin:document.getElementById('f_hf').value,
+    tipoEvento:document.getElementById('f_tipo').value,
+    lugar:document.getElementById('f_lugar').value.trim(),
+    mensaje:document.getElementById('f_msg').value.trim()
+  };
+  gasCall('enviarSolicitud',{data}).then(function(r){
+    btn.disabled=false; btn.textContent='Enviar solicitud'; msg.style.display='block';
+    if(r.ok){msg.className='form-msg ok';msg.textContent='Solicitud enviada. Te confirmaré en menos de 24 horas.';toast('Solicitud enviada!');e.target.reset();}
+    else{msg.className='form-msg err';msg.textContent='Error: '+(r.error||'Intentalo de nuevo');}
+  }).catch(function(){
+    btn.disabled=false; btn.textContent='Enviar solicitud'; msg.style.display='block';
+    msg.className='form-msg err'; msg.textContent='Error de conexión. Escríbeme directamente por email.';
+  });
+}
+
+// ADMIN
+
+function initDJCookies(){
+  if(!localStorage.getItem('djCookies')){
+    var b=document.getElementById('djCookieBanner');
+    if(b) b.style.display='block';
+  }
+}
+function acceptDJCookies(){
+  localStorage.setItem('djCookies','accepted');
+  var b=document.getElementById('djCookieBanner');if(b)b.style.display='none';
+}
+function rejectDJCookies(){
+  localStorage.setItem('djCookies','rejected');
+  var b=document.getElementById('djCookieBanner');if(b)b.style.display='none';
+}
+function loadResenas(){
+  gasCall('getResenas',{soloAprobadas:true}).then(function(r){
+    var grid=document.getElementById('resenasGrid');
+    if(!r.ok||!r.resenas||!r.resenas.length){grid.innerHTML='<div class="resena-empty">Se el primero en opinar.</div>';return;}
+    grid.innerHTML=r.resenas.map(function(rv){
+      var s='';for(var i=0;i<5;i++)s+=i<rv.estrellas?'&#9733;':'&#9734;';
+      return '<div class="resena-card"><div class="resena-stars">'+s+'</div><div class="resena-texto">&ldquo;'+rv.texto+'&rdquo;</div><div class="resena-autor"><div class="resena-avatar">'+rv.nombre.charAt(0).toUpperCase()+'</div><div><div class="resena-nombre">'+rv.nombre+'</div><div class="resena-evento">'+rv.evento+'</div></div></div></div>';
+    }).join('');
+  }).catch(function(){document.getElementById('resenasGrid').innerHTML='<div class="resena-empty">No hay opiniones aun.</div>';});
+}
+
+function enviarResena(){
+  var nombre=document.getElementById('r_nombre').value.trim();
+  var evento=document.getElementById('r_evento').value;
+  var texto=document.getElementById('r_texto').value.trim();
+  var se=document.querySelector('input[name="stars"]:checked');
+  var msg=document.getElementById('resenaMsg');
+  var btn=document.getElementById('btnResena');
+  if(!nombre||!evento||!texto||!se){msg.style.display='block';msg.className='form-msg err';msg.textContent='Por favor rellena todos los campos.';return;}
+  btn.disabled=true;btn.textContent='Enviando...';
+  gasCall('addResena',{nombre:nombre,evento:evento,texto:texto,estrellas:parseInt(se.value)})
+    .then(function(r){
+      btn.disabled=false;btn.textContent='Enviar opinion';msg.style.display='block';
+      if(r.ok){msg.className='form-msg ok';msg.textContent='Gracias! Pendiente de aprobacion.';document.getElementById('r_nombre').value='';document.getElementById('r_evento').value='';document.getElementById('r_texto').value='';document.querySelectorAll('input[name="stars"]').forEach(function(i){i.checked=false;});}
+      else{msg.className='form-msg err';msg.textContent='Error al enviar.';}
+    }).catch(function(){btn.disabled=false;btn.textContent='Enviar opinion';msg.style.display='block';msg.className='form-msg err';msg.textContent='Error de conexion.';});
+}
+
+function loadResenasPendientes(){
+  if(!G.isAdmin)return;
+  document.getElementById('adminResenas').style.display='block';
+  gasCall('getResenas',{soloAprobadas:false}).then(function(r){
+    var pend=(r.resenas||[]).filter(function(rv){return rv.estado==='Pendiente';});
+    var wrap=document.getElementById('resenasPendientes');
+    if(!pend.length){wrap.innerHTML='<p style="color:var(--muted);font-size:.82em;">Sin resenas pendientes.</p>';return;}
+    function st(n){var s='';for(var i=0;i<5;i++)s+=i<n?'★':'☆';return s;}
+    wrap.innerHTML=pend.map(function(rv){
+      return '<div class="resena-admin-card"><div class="resena-admin-info"><div style="font-weight:700;color:var(--white);font-size:.85em;">'+rv.nombre+' &mdash; '+rv.evento+' <span style="color:var(--gold)">'+st(rv.estrellas)+'</span></div><div style="color:var(--muted);font-size:.8em;margin-top:6px;font-style:italic;">&ldquo;'+rv.texto+'&rdquo;</div></div><div class="resena-admin-btns"><button class="btn-aprobar" data-id="'+rv.id+'" onclick="handleAprobar(this)">Publicar</button><button class="btn-rechazar" data-id="'+rv.id+'" onclick="handleRechazar(this)">Eliminar</button></div></div>';
+    }).join('');
+  });
+}
+
+function handleResena(el,estado){gestionarResena(el,estado);}
+function handleAprobar(el){gestionarResena(el,'Aprobada');}
+function handleRechazar(el){gestionarResena(el,'Rechazada');}
+function gestionarResena(el,estado){
+  var id=el.getAttribute('data-id');
+  gasCall('updateResena',{id:id,estado:estado}).then(function(r){
+    if(r.ok){toast(estado==='Aprobada'?'Resena publicada':'Resena eliminada');loadResenas();loadResenasPendientes();}
+  });
+}
+function showAdmin(){
+  var p=prompt('Contraseña admin:');
+  if(p===ADMIN_PASS){G.isAdmin=true;toast('Modo admin activado ✓');document.getElementById('adminHint').textContent='- Admin activo';}
+  else if(p!==null) toast('Contraseña incorrecta');
+}
+
+// NAV
+function setNav(el){document.querySelectorAll('nav a').forEach(function(a){a.classList.remove('on');});el.classList.add('on');}
+window.addEventListener('scroll',function(){
+  var sy=window.scrollY+120;
+  ['home','bio-wrap','svc-wrap','calendario','contacto'].forEach(function(id){
+    var el=document.getElementById(id); if(!el) return;
+    if(sy>=el.offsetTop&&sy<el.offsetTop+el.offsetHeight){
+      document.querySelectorAll('nav a').forEach(function(a){
+        a.classList.toggle('on',a.getAttribute('href')==='#'+id);
+      });
+    }
+  });
+});
+
+// TOAST
+var toastT;
+function toast(msg){
+  var el=document.getElementById('toast');el.textContent=msg;el.style.display='block';
+  clearTimeout(toastT);toastT=setTimeout(function(){el.style.display='none';},3500);
+}
+
+document.addEventListener('DOMContentLoaded', function() {
+  loadSlots();
+  loadResenas();
+  initDJCookies();
+  // Reveal observer
+  var obs = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e){ if(e.isIntersecting) e.target.classList.add('visible'); });
+  }, {threshold:.08});
+  document.querySelectorAll('.reveal').forEach(function(el){ obs.observe(el); });
+});
+</script>
+</body>
+</html>
