@@ -645,8 +645,7 @@ function renderCal(){
       daySlots.forEach(function(s){
         html+='<div class="cal-occ-dot" style="color:var(--red)">'+s.horaInicio+'-'+s.horaFin+'</div>';
       });
-    } else if(!G.isAdmin && daySlots.length>0){
-      html+='<div class="cal-occ-dot">'+daySlots.length+' ocupad'+(daySlots.length>1?'as':'a')+'</div>';
+    // Client sees nothing - they discover availability when clicking the day
     }
     html+='</div>';
   }
@@ -699,8 +698,12 @@ function selectDay(ds){
     // Init client picker
     var hours=genH();
     var cs=document.getElementById('cli_start');
+    var occ2=daySlots.filter(function(s){return s.tipo!=='bloqueado';});
     cs.innerHTML='<option value="">Selecciona hora inicio...</option>';
-    hours.forEach(function(h){cs.innerHTML+='<option>'+h+'</option>';});
+    hours.forEach(function(h){
+      var blocked=isHourBlocked(h,occ2);
+      cs.innerHTML+='<option'+(blocked?' disabled style="color:#666"':'')+'>'+h+(blocked?' (ocupado)':'')+'</option>';
+    });
     document.getElementById('cli_end').innerHTML='<option value="">Primero elige inicio</option>';
     document.getElementById('alertConflict').style.display='none';
     // Save occupied slots for conflict detection
