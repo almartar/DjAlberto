@@ -221,6 +221,7 @@ footer .ft-name{font-family:'Bebas Neue',sans-serif;font-size:1.9em;letter-spaci
   .sec{padding:70px 20px;}
   .hero-content{padding:36px 20px 0;}
   .hero-name{font-size:4em;}
+  #heroBg{background-position:60% 15% !important;}
   #bio-sec{grid-template-columns:1fr;gap:36px;}
   .svc-grid{grid-template-columns:1fr;}
   #contacto .contact-wrap{grid-template-columns:1fr;gap:40px;}
@@ -658,7 +659,12 @@ function genH(){
   for(var i=1;i<=6;i++) h.push(String(i).padStart(2,'0')+':00');
   return h;
 }
-function h2n(h){var n=parseInt(h);return n<7?n+24:n;}
+function h2n(h){
+  if(!h) return 0;
+  var parts = h.toString().split(':');
+  var n = parseInt(parts[0]);
+  return n < 7 ? n + 24 : n;
+}
 
 function selectDay(ds){
   G.selectedDate=ds; renderCal();
@@ -722,7 +728,11 @@ function onEndChange(){
   if(!sv||!ev) return;
   var sn=h2n(sv),en=h2n(ev);
   var occ=document.getElementById('cli_start')._occ||[];
-  var conflict=occ.some(function(o){return sn<h2n(o.horaFin)&&en>h2n(o.horaInicio);});
+  var conflict=occ.some(function(o){
+    var oS=h2n(o.horaInicio), oE=h2n(o.horaFin);
+    if(oE<=oS) oE+=24;  // overnight slot
+    return sn<oE && en>oS;
+  });
   document.getElementById('alertConflict').style.display=conflict?'block':'none';
   document.getElementById('alertOk').style.display=!conflict?'block':'none';
   document.getElementById('btnBook').className='btn-book-slot'+(conflict?'':' show');
