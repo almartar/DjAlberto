@@ -656,6 +656,7 @@ function renderCal(){
 function genH(){
   var h=[];
   for(var i=10;i<24;i++) h.push(String(i).padStart(2,'0')+':00');
+  h.push('00:00');
   for(var i=1;i<=6;i++) h.push(String(i).padStart(2,'0')+':00');
   return h;
 }
@@ -663,6 +664,8 @@ function h2n(h){
   if(!h) return 0;
   var parts = h.toString().split(':');
   var n = parseInt(parts[0]);
+  // 00:00 (midnight) = 24, not 0
+  if (n === 0) return 24;
   return n < 7 ? n + 24 : n;
 }
 
