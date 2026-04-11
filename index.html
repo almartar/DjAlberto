@@ -230,6 +230,14 @@ footer .ft-name{font-family:'Bebas Neue',sans-serif;font-size:1.9em;letter-spaci
   #svc-wrap .inner{padding:0 20px;}
 }
 </style>
+<!-- Google Analytics -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-CTXXLGL4J9"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+  gtag('config', 'G-CTXXLGL4J9');
+</script>
 </head>
 <body>
 <div id="toast"></div>
@@ -514,7 +522,7 @@ footer .ft-name{font-family:'Bebas Neue',sans-serif;font-size:1.9em;letter-spaci
     <button class="dj-modal-close" onclick="document.getElementById('djAvisoModal').style.display='none'">&#10005;</button>
     <h2>Aviso Legal</h2>
     <h3>Titular</h3>
-    <p><strong>Titular:</strong> Alberto Mart&iacute;<br><strong>Domicilio:</strong> Xàtiva, Valencia<br><strong>Email:</strong> albertoylucia2011@gmail.com</p>
+    <p><strong>Titular:</strong> Alberto Mart&iacute;<br><strong>Domicilio:</strong> Xàtiva, Valencia<br><strong>Email:</strong> <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="f3929f919681879c8a9f86909a92c1c3c2c2b3949e929a9fdd909c9e">[email&#160;protected]</a></p>
     <h3>Objeto</h3>
     <p>Sitio web informativo sobre servicios de DJ de Alberto Mart&iacute; con formulario de contacto y solicitud de presupuesto.</p>
     <h3>Propiedad intelectual</h3>
@@ -537,7 +545,7 @@ footer .ft-name{font-family:'Bebas Neue',sans-serif;font-size:1.9em;letter-spaci
     <h3>Cesi&oacute;n a terceros</h3>
     <p>Los datos no se ceden a terceros salvo obligaci&oacute;n legal.</p>
     <h3>Derechos</h3>
-    <p>Acceso, rectificaci&oacute;n y supresi&oacute;n en: <strong>albertoylucia2011@gmail.com</strong></p>
+    <p>Acceso, rectificaci&oacute;n y supresi&oacute;n en: <strong><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="9cfdf0fef9eee8f3e5f0e9fff5fdaeacadaddcfbf1fdf5f0b2fff3f1">[email&#160;protected]</a></strong></p>
   </div>
 </div>
 
@@ -578,7 +586,7 @@ footer .ft-name{font-family:'Bebas Neue',sans-serif;font-size:1.9em;letter-spaci
   <a href="#contacto" onclick="setNav(this)">Contactar</a>
 </nav>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 var GAS_URL    = 'https://script.google.com/macros/s/AKfycbxlILj3qI2sLfXFOqLyGeSJ-adWvMbMwdZoOjiUpMaPpr7eIxZmqel1NthfDet1uHIJ6w/exec';
 var HERO_PHOTO = 'https://i.imgur.com/xiUZX5l.png';
 var BIO_PHOTO  = 'https://i.imgur.com/wvRoFS1.png';
@@ -895,15 +903,4 @@ function toast(msg){
   clearTimeout(toastT);toastT=setTimeout(function(){el.style.display='none';},3500);
 }
 
-document.addEventListener('DOMContentLoaded', function() {
-  loadSlots();
-  loadResenas();
-  initDJCookies();
-  var obs = new IntersectionObserver(function(entries) {
-    entries.forEach(function(e){ if(e.isIntersecting) e.target.classList.add('visible'); });
-  }, {threshold:.08});
-  document.querySelectorAll('.reveal').forEach(function(el){ obs.observe(el); });
-});
-</script>
-</body>
-</html>
+document.addEventListener('
