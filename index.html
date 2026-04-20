@@ -669,7 +669,9 @@ function gasCall(action, params) {
 //  CALENDARIO
 // ============================================================
 function loadSlots() {
-  gasCall('getDisponibilidad', { mes: G.curM + 1, anio: G.curY }).then(function(r){
+  // Carga TODOS los slots de una vez — sin filtro de mes
+  // así al cambiar de mes no hay nueva llamada al GAS
+  gasCall('getDisponibilidad', {}).then(function(r){
     if (r.ok) G.slots = r.slots || [];
     renderCal();
   }).catch(function(){ renderCal(); });
@@ -681,7 +683,7 @@ function changeMonth(d) {
   if (G.curM < 0)  { G.curM = 11; G.curY--; }
   G.selectedDate = null;
   document.getElementById('calSidebar').className = 'cal-sidebar';
-  loadSlots();
+  renderCal(); // solo re-pinta, sin llamar al GAS
 }
 
 function goToday() {
@@ -885,7 +887,8 @@ function openWhatsApp() {
     + ', de ' + sv + ' a ' + ev + '.'
     + '\n📍 Ubicación: ' + ubicacion
     + '\n🎛️ Equipamiento: ' + equipo
-    + '\n¿Está disponible y cuál sería el precio?';
+    + '\n¿Está disponible y cuál sería el precio?'
+    + '\n\n_(Te responderé en cuanto pueda con disponibilidad y precio)_';
 
   // Notificar al GAS para que llegue Telegram al admin
   gasCall('notificarContacto', {
