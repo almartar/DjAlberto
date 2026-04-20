@@ -717,8 +717,7 @@ function renderCal() {
       + (past      ? ' cal-past'    : '')
       + (isT       ? ' cal-today'   : '')
       + (isW       ? ' cal-weekend' : '')
-      + (isSel     ? ' cal-selected': '')
-      + (isBlocked && !G.isAdmin ? ' cal-blocked' : '');
+      + (isSel     ? ' cal-selected': '');
 
     html += '<div class="' + cls + '" data-date="' + ds + '" onclick="handleDayClick(this)">';
     html += '<div class="cal-dn">' + d + '</div>';
@@ -734,10 +733,6 @@ function renderCal() {
 
 function handleDayClick(el) {
   if (el.classList.contains('cal-past') || el.classList.contains('cal-empty')) return;
-  if (el.classList.contains('cal-blocked') && !G.isAdmin) {
-    toast('Este día no está disponible.');
-    return;
-  }
   var ds = el.getAttribute('data-date');
   if (ds) selectDay(ds);
 }
