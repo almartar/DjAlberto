@@ -123,19 +123,50 @@ nav a.on::after{content:'';position:absolute;top:0;left:0;right:0;height:2px;bac
 .btn-add{width:100%;background:var(--gold);color:#000;border:none;padding:11px;font-family:'Montserrat',sans-serif;font-size:.7em;font-weight:700;letter-spacing:3px;text-transform:uppercase;cursor:pointer;transition:opacity .2s;margin-top:6px;}
 .btn-add:hover{opacity:.85;}
 
-/* CLIENT TIME PICKER */
+/* CLIENT TIME PICKER — simplificado para flujo WhatsApp */
 .time-picker-wrap{padding:4px 0;}
-.time-picker-label{font-size:.62em;letter-spacing:3px;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:16px;}
-.time-picker-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:14px;}
+.time-picker-label{font-size:.62em;letter-spacing:3px;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:6px;}
+.time-picker-hint{font-size:.72em;color:var(--muted);line-height:1.6;margin-bottom:16px;font-weight:300;}
+.time-picker-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:18px;}
 .tpg label{font-size:.6em;letter-spacing:2px;text-transform:uppercase;color:var(--muted);font-weight:600;display:block;margin-bottom:5px;}
 .tpg select{width:100%;background:#0a0a0a;border:1px solid var(--line);color:var(--white);padding:10px 12px;font-family:'Montserrat',sans-serif;font-size:.85em;outline:none;-webkit-appearance:none;cursor:pointer;}
 .tpg select:focus{border-color:var(--gold);}
 .tpg select option{background:#111;}
-.alert-conflict{display:none;font-size:.75em;color:var(--red);padding:10px 14px;border:1px solid rgba(230,48,48,.3);background:rgba(230,48,48,.05);margin-bottom:12px;letter-spacing:.5px;}
-.alert-ok{display:none;font-size:.75em;color:var(--green);padding:10px 14px;border:1px solid rgba(0,200,100,.2);background:rgba(0,200,100,.05);margin-bottom:12px;letter-spacing:.5px;}
-.btn-book-slot{width:100%;background:transparent;border:1px solid var(--gold);color:var(--gold);padding:13px;font-family:'Montserrat',sans-serif;font-size:.72em;font-weight:700;letter-spacing:3px;text-transform:uppercase;cursor:pointer;transition:all .3s;display:none;}
-.btn-book-slot:hover{background:var(--gold);color:#000;}
-.btn-book-slot.show{display:block;}
+.tpg select option:disabled{color:#444;}
+
+/* BOTÓN WHATSAPP en sidebar */
+.btn-whatsapp-book{
+  display:none;
+  width:100%;
+  background:#25D366;
+  color:#fff;
+  border:none;
+  padding:15px;
+  font-family:'Montserrat',sans-serif;
+  font-size:.78em;
+  font-weight:700;
+  letter-spacing:3px;
+  text-transform:uppercase;
+  cursor:pointer;
+  transition:opacity .3s, transform .2s;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+}
+.btn-whatsapp-book.show{display:flex;}
+.btn-whatsapp-book:hover{opacity:.88;transform:translateY(-1px);}
+.btn-whatsapp-book .wa-icon{font-size:1.3em;line-height:1;}
+.wa-selected-time{
+  display:none;
+  margin-bottom:14px;
+  padding:10px 14px;
+  border:1px solid rgba(37,211,102,.25);
+  background:rgba(37,211,102,.05);
+  font-size:.78em;
+  color:#25D366;
+  letter-spacing:.5px;
+}
+.wa-selected-time.show{display:block;}
 
 /* CONTACTO */
 #contacto .contact-wrap{display:grid;grid-template-columns:1fr 1fr;gap:80px;margin-top:36px;}
@@ -238,8 +269,8 @@ form{display:flex;flex-direction:column;gap:14px;}
     <h1 class="hero-name">DJ<br><span>Alberto</span><br>Marti</h1>
     <p class="hero-sub">Bodas &nbsp;·&nbsp; Eventos &nbsp;·&nbsp; Clubs</p>
     <div class="hero-cta">
-      <a href="#contacto" class="btn-gold">Solicitar presupuesto</a>
-      <a href="#calendario" class="btn-out">Ver disponibilidad</a>
+      <a href="#calendario" class="btn-gold">Ver disponibilidad</a>
+      <a href="#contacto" class="btn-out">Más información</a>
     </div>
   </div>
 </div>
@@ -335,10 +366,10 @@ form{display:flex;flex-direction:column;gap:14px;}
 <div id="cal-sec">
 <div class="sec reveal">
   <span class="sec-label">Disponibilidad</span>
-  <h2 class="sec-title">Consulta fechas<br>y horarios</h2>
+  <h2 class="sec-title">Consulta fechas<br>y reserva</h2>
   <div class="sec-div"></div>
   <p style="color:var(--muted);font-size:.82em;margin-bottom:24px;line-height:1.7;">
-    Haz click en cualquier día para elegir tu franja horaria y solicitar la fecha.
+    Elige el día y la franja horaria. Si está disponible, te conectarás directamente conmigo por WhatsApp para cerrar la reserva.
     <span id="adminHint" style="color:var(--gold);cursor:pointer;margin-left:8px;display:none;font-size:.8em;letter-spacing:2px;"></span>
   </p>
   <div class="cal-container">
@@ -352,8 +383,8 @@ form{display:flex;flex-direction:column;gap:14px;}
         <button class="cal-today-btn" onclick="goToday()">Hoy</button>
       </div>
       <div class="cal-legend-top">
-        <div class="cal-legend-item"><div class="cal-legend-dot" style="background:var(--red)"></div>Horas ocupadas</div>
-        <div class="cal-legend-item"><div class="cal-legend-dot" style="background:rgba(255,255,255,.2)"></div>Disponible</div>
+        <div class="cal-legend-item"><div class="cal-legend-dot" style="background:var(--red)"></div>No disponible</div>
+        <div class="cal-legend-item"><div class="cal-legend-dot" style="background:rgba(255,255,255,.25)"></div>Disponible</div>
       </div>
     </div>
     <div class="cal-weekdays">
@@ -365,34 +396,50 @@ form{display:flex;flex-direction:column;gap:14px;}
     <div class="cal-grid" id="calGrid"><div class="loader">Cargando...</div></div>
     <div class="cal-sidebar" id="calSidebar">
       <div class="cal-sidebar-date" id="sidebarDate"></div>
+
+      <!-- VISTA ADMIN -->
       <div id="adminView" style="display:none;">
         <div class="add-slot-form">
-          <div class="add-slot-title">+ Marcar franja como ocupada</div>
+          <div class="add-slot-title">+ Marcar franja como bloqueada</div>
           <div class="asl-row">
             <div class="asl-g"><label>Hora inicio</label><select id="asl_start"></select></div>
             <div class="asl-g"><label>Hora fin</label><select id="asl_end"></select></div>
           </div>
           <div class="asl-g" style="margin-bottom:10px"><label>Notas internas</label><input type="text" id="asl_notas" placeholder="Ej: Boda Garcia..."></div>
-          <button class="btn-add" onclick="addSlot()">Guardar franja ocupada</button>
+          <button class="btn-add" onclick="addSlot()">Guardar franja bloqueada</button>
         </div>
         <div id="adminSlots"></div>
       </div>
+
+      <!-- VISTA CLIENTE — flujo WhatsApp directo -->
       <div id="clientView">
         <div class="time-picker-wrap">
           <div class="time-picker-label">Elige tu horario</div>
+          <p class="time-picker-hint">Selecciona inicio y fin. Si está disponible, te abrirá WhatsApp directamente para hablar conmigo y cerrar la reserva.</p>
           <div class="time-picker-grid">
-            <div class="tpg"><label>Hora inicio</label>
-              <select id="cli_start" onchange="onStartChange()"><option value="">Selecciona...</option></select>
+            <div class="tpg">
+              <label>Hora inicio</label>
+              <select id="cli_start" onchange="onStartChange()">
+                <option value="">Selecciona...</option>
+              </select>
             </div>
-            <div class="tpg"><label>Hora fin</label>
-              <select id="cli_end" onchange="onEndChange()"><option value="">Primero elige inicio</option></select>
+            <div class="tpg">
+              <label>Hora fin</label>
+              <select id="cli_end" onchange="onEndChange()">
+                <option value="">Primero elige inicio</option>
+              </select>
             </div>
           </div>
-          <div class="alert-conflict" id="alertConflict">⚠ Ese horario ya está ocupado. Por favor elige otro.</div>
-          <div class="alert-ok" id="alertOk">✓ Horario disponible</div>
-          <button class="btn-book-slot" id="btnBook" onclick="confirmTime()">Solicitar este horario →</button>
+          <!-- Confirmación de horario seleccionado -->
+          <div class="wa-selected-time" id="waSelectedTime"></div>
+          <!-- Botón WhatsApp -->
+          <button class="btn-whatsapp-book" id="btnWhatsapp" onclick="openWhatsApp()">
+            <span class="wa-icon">💬</span>
+            Reservar por WhatsApp
+          </button>
         </div>
       </div>
+
     </div>
   </div>
 </div>
@@ -406,9 +453,17 @@ form{display:flex;flex-direction:column;gap:14px;}
   <div class="sec-div"></div>
   <div class="contact-wrap">
     <div class="contact-info">
-      <p>¿Tienes una fecha en mente? Cuéntame los detalles del evento a través del formulario y te respondo en menos de 24 horas.</p>
-      <p>Una vez revisada tu solicitud, me pondré en contacto contigo directamente por teléfono para hablar de todos los detalles y cerrar los flecos.</p>
-      <p style="color:var(--gold);font-size:.8em;margin-top:20px;letter-spacing:1px;">📞 Contacto telefónico tras revisar tu solicitud</p>
+      <p>¿Tienes una fecha en mente? Usa el calendario para elegir tu franja horaria y contacta conmigo directamente por WhatsApp. En menos de 24 horas te confirmo disponibilidad.</p>
+      <p>Una vez acordado el evento, formalizo la reserva con una señal por Bizum o PayPal y la fecha queda bloqueada para ti.</p>
+      <p style="color:var(--gold);font-size:.8em;margin-top:20px;letter-spacing:1px;">💬 Contacto rápido por WhatsApp · 📅 Reserva con señal</p>
+      <div class="contact-links" style="margin-top:28px;">
+        <a href="https://wa.me/34658023238?text=Hola%20Alberto,%20me%20gustaría%20saber%20más%20sobre%20tus%20servicios" target="_blank">
+          <span class="ic">💬</span> WhatsApp: +34 658 023 238
+        </a>
+        <a href="mailto:albertoylucia2011@gmail.com">
+          <span class="ic">✉</span> albertoylucia2011@gmail.com
+        </a>
+      </div>
     </div>
     <form onsubmit="enviarSolicitud(event)">
       <div class="fr">
@@ -418,10 +473,6 @@ form{display:flex;flex-direction:column;gap:14px;}
       <div class="fr">
         <div class="fg"><label>Teléfono</label><input type="tel" id="f_tel" placeholder="+34 600 000 000"></div>
         <div class="fg"><label>Fecha *</label><input type="date" id="f_fecha" required></div>
-      </div>
-      <div class="fr">
-        <div class="fg"><label>Hora inicio</label><input type="text" id="f_hi" placeholder="Ej: 19:00" readonly></div>
-        <div class="fg"><label>Hora fin</label><input type="text" id="f_hf" placeholder="Ej: 01:00" readonly></div>
       </div>
       <div class="fg">
         <label>Tipo de evento *</label>
@@ -436,8 +487,8 @@ form{display:flex;flex-direction:column;gap:14px;}
         </select>
       </div>
       <div class="fg"><label>Localización</label><input type="text" id="f_lugar" placeholder="Ciudad, sala o espacio"></div>
-      <div class="fg"><label>Mensaje</label><textarea id="f_msg" placeholder="Estilo musical, horario, detalles..."></textarea></div>
-      <button type="submit" class="btn-submit" id="btnSubmit">Enviar solicitud</button>
+      <div class="fg"><label>Mensaje</label><textarea id="f_msg" placeholder="Estilo musical, horario aproximado, detalles..."></textarea></div>
+      <button type="submit" class="btn-submit" id="btnSubmit">Enviar consulta</button>
       <div class="form-msg" id="formMsg"></div>
     </form>
   </div>
@@ -538,9 +589,9 @@ form{display:flex;flex-direction:column;gap:14px;}
     <h3>1. Servicio</h3>
     <p>DJ Alberto Martí ofrece servicios de DJ para bodas, eventos privados y clubs en Valencia y alrededores.</p>
     <h3>2. Confirmación de reserva</h3>
-    <p>La solicitud web no implica reserva. La fecha queda confirmada mediante acuerdo escrito y pago de señal.</p>
+    <p>El contacto por WhatsApp no implica reserva. La fecha queda confirmada mediante señal por Bizum o PayPal.</p>
     <h3>3. Cancelaciones</h3>
-    <p>Cancelaciones con menos de 30 días de antelación pueden conllevar pérdida de la señal. Condiciones definitivas en contrato individual.</p>
+    <p>Cancelaciones con menos de 30 días de antelación pueden conllevar pérdida de la señal. Condiciones definitivas acordadas individualmente.</p>
     <h3>4. Reseñas</h3>
     <p>Las reseñas están sujetas a moderación previa. Se reserva el derecho a no publicar contenidos ofensivos o falsos.</p>
     <h3>5. Legislación</h3>
@@ -559,16 +610,16 @@ form{display:flex;flex-direction:column;gap:14px;}
 
 <script>
 // ============================================================
-//  CONFIGURACIÓN — SOLO LA URL DEL GAS (no hay secretos aquí)
+//  CONFIGURACIÓN
 // ============================================================
 var GAS_URL    = 'https://script.google.com/macros/s/AKfycbxlILj3qI2sLfXFOqLyGeSJ-adWvMbMwdZoOjiUpMaPpr7eIxZmqel1NthfDet1uHIJ6w/exec';
 var HERO_PHOTO = 'https://i.imgur.com/xiUZX5l.png';
 var BIO_PHOTO  = 'https://i.imgur.com/wvRoFS1.png';
+var WA_NUMBER  = '34658023238';
 
-// Estado global — el adminToken vive solo en memoria RAM, no en el DOM ni en localStorage
 var G = {
   isAdmin:    false,
-  adminToken: null,   // UUID temporal emitido por el GAS, nunca expuesto en HTML
+  adminToken: null,
   slots:      [],
   selectedDate: null,
   curY: null,
@@ -593,7 +644,7 @@ if (BIO_PHOTO) {
 }
 
 // ============================================================
-//  ACCESO ADMIN — 5 clicks en el hero activa el prompt
+//  ACCESO ADMIN — 5 clicks en el hero
 // ============================================================
 var _cc = 0;
 document.getElementById('hero').addEventListener('click', function(){
@@ -602,13 +653,11 @@ document.getElementById('hero').addEventListener('click', function(){
 });
 
 // ============================================================
-//  COMUNICACIÓN CON EL GAS
-//  El adminToken se añade automáticamente en acciones protegidas
+//  COMUNICACIÓN GAS
 // ============================================================
 function gasCall(action, params) {
   if (!GAS_URL) return Promise.resolve({ ok:true, slots:[], solicitudes:[], resenas:[] });
   var payload = Object.assign({ action: action }, params || {});
-  // Inyectar token si existe (el servidor lo verifica, el frontend nunca lo valida)
   if (G.adminToken) payload.adminToken = G.adminToken;
   return fetch(GAS_URL, {
     method: 'POST',
@@ -618,7 +667,7 @@ function gasCall(action, params) {
 }
 
 // ============================================================
-//  LOGIN ADMIN — la contraseña va al servidor, nunca al DOM
+//  LOGIN ADMIN
 // ============================================================
 function showAdmin() {
   var p = prompt('Contraseña admin:');
@@ -626,7 +675,7 @@ function showAdmin() {
   gasCall('login', { pass: p }).then(function(r) {
     if (r.ok) {
       G.isAdmin    = true;
-      G.adminToken = r.token; // UUID en RAM, invisible en el inspector
+      G.adminToken = r.token;
       toast('Modo admin activado ✓');
       var hint = document.getElementById('adminHint');
       hint.style.display = 'inline';
@@ -640,8 +689,8 @@ function showAdmin() {
 // ============================================================
 //  CALENDARIO
 // ============================================================
-var MONTHS    = ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
-var MONTHSES  = ['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
+var MONTHS   = ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
+var MONTHSES = ['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
 
 function loadSlots() {
   gasCall('getDisponibilidad', { mes: G.curM+1, anio: G.curY }).then(function(r){
@@ -668,7 +717,10 @@ function goToday() {
 
 function handleDayClick(el) {
   if (el.classList.contains('cal-past') || el.classList.contains('cal-empty')) return;
-  if (el.classList.contains('cal-blocked') && !G.isAdmin) { toast('Este día no está disponible.'); return; }
+  if (el.classList.contains('cal-blocked') && !G.isAdmin) {
+    toast('Este día no está disponible.');
+    return;
+  }
   var ds = el.getAttribute('data-date');
   if (ds) selectDay(ds);
 }
@@ -690,8 +742,8 @@ function renderCal() {
     var isT  = d === today.getDate() && G.curM === today.getMonth() && G.curY === today.getFullYear();
     var isW  = cd.getDay() === 0 || cd.getDay() === 6;
     var isSel= ds === G.selectedDate;
-    var daySlots = G.slots.filter(function(s){ return s.fecha === ds; });
-    var isBlocked= G.slots.some(function(s){ return s.fecha === ds && s.tipo === 'bloqueado'; });
+    var daySlots    = G.slots.filter(function(s){ return s.fecha === ds; });
+    var isBlocked   = G.slots.some(function(s){ return s.fecha === ds && s.tipo === 'bloqueado'; });
 
     var cls = 'cal-cell' +
       (past      ? ' cal-past'    : '') +
@@ -702,8 +754,11 @@ function renderCal() {
 
     html += '<div class="'+cls+'" data-date="'+ds+'" onclick="handleDayClick(this)">';
     html += '<div class="cal-dn">'+d+'</div>';
+    // Admin ve las franjas bloqueadas en el grid
     if (G.isAdmin && daySlots.length > 0) {
-      daySlots.forEach(function(s){ html += '<div class="cal-occ-dot" style="color:var(--red)">'+s.horaInicio+'-'+s.horaFin+'</div>'; });
+      daySlots.forEach(function(s){
+        html += '<div class="cal-occ-dot">'+s.horaInicio+'-'+s.horaFin+'</div>';
+      });
     }
     html += '</div>';
   }
@@ -731,10 +786,10 @@ function selectDay(ds) {
   renderCal();
   var p = ds.split('-');
   document.getElementById('sidebarDate').textContent = parseInt(p[2]) + ' de ' + MONTHSES[parseInt(p[1])-1] + ' de ' + p[0];
-  document.getElementById('f_fecha').value = ds;
   var daySlots = G.slots.filter(function(s){ return s.fecha === ds; });
 
   if (G.isAdmin) {
+    // --- VISTA ADMIN ---
     document.getElementById('adminView').style.display = 'block';
     document.getElementById('clientView').style.display = 'none';
     var hours = genH();
@@ -745,29 +800,40 @@ function selectDay(ds) {
     es.selectedIndex = 2;
     var html = '';
     if (daySlots.length === 0) {
-      html = '<p style="color:var(--muted);font-size:.78em;padding:8px 0;">Sin franjas ocupadas en este día.</p>';
+      html = '<p style="color:var(--muted);font-size:.78em;padding:8px 0;">Sin franjas bloqueadas en este día.</p>';
     } else {
       daySlots.forEach(function(s){
-        html += '<div class="cal-sidebar-slot"><div><div class="slt-time">'+s.horaInicio+' - '+s.horaFin+'</div>'+(s.notas?'<div class="slt-note">'+s.notas+'</div>':'')+'</div><button class="slt-btn-del" data-id="'+s.id+'" onclick="handleDelete(this)">Borrar</button></div>';
+        html += '<div class="cal-sidebar-slot">'
+          + '<div><div class="slt-time">'+s.horaInicio+' — '+s.horaFin+'</div>'
+          + (s.notas ? '<div class="slt-note">'+s.notas+'</div>' : '')
+          + '</div>'
+          + '<button class="slt-btn-del" data-id="'+s.id+'" onclick="handleDelete(this)">Borrar</button>'
+          + '</div>';
       });
     }
     document.getElementById('adminSlots').innerHTML = html;
+
   } else {
+    // --- VISTA CLIENTE ---
     document.getElementById('adminView').style.display = 'none';
     document.getElementById('clientView').style.display = 'block';
+
     var hours = genH();
     var cs = document.getElementById('cli_start');
-    var occ2 = daySlots.filter(function(s){ return s.tipo !== 'bloqueado'; });
+    // Solo slots de tipo bloqueado bloquean horas al cliente
+    var blockedSlots = daySlots.filter(function(s){ return s.tipo === 'bloqueado'; });
+
     cs.innerHTML = '<option value="">Selecciona hora inicio...</option>';
     hours.forEach(function(h){
-      var blocked = isHourBlocked(h, occ2);
-      cs.innerHTML += '<option'+(blocked?' disabled style="color:#666"':'')+'>'+h+(blocked?' (ocupado)':'')+'</option>';
+      var blocked = isHourBlocked(h, blockedSlots);
+      cs.innerHTML += '<option'+(blocked?' disabled style="color:#555"':'')+' value="'+h+'">'+h+(blocked?' (no disponible)':'')+'</option>';
     });
+
     document.getElementById('cli_end').innerHTML = '<option value="">Primero elige inicio</option>';
-    document.getElementById('alertConflict').style.display = 'none';
-    document.getElementById('alertOk').style.display = 'none';
-    document.getElementById('btnBook').className = 'btn-book-slot';
-    cs._occ = daySlots;
+    document.getElementById('waSelectedTime').className = 'wa-selected-time';
+    document.getElementById('btnWhatsapp').className = 'btn-whatsapp-book';
+    // Guardamos los slots bloqueados en el select para uso posterior
+    cs._blocked = blockedSlots;
   }
 
   document.getElementById('calSidebar').className = 'cal-sidebar visible';
@@ -784,42 +850,70 @@ function isHourBlocked(h, occ) {
 }
 
 function onStartChange() {
-  var sv = document.getElementById('cli_start').value; if (!sv) return;
-  var sn = h2n(sv); var hours = genH();
+  var sv = document.getElementById('cli_start').value;
+  if (!sv) return;
+  var sn = h2n(sv);
+  var hours = genH();
+  var blockedSlots = document.getElementById('cli_start')._blocked || [];
   var es = document.getElementById('cli_end');
+
   es.innerHTML = '<option value="">Selecciona hora fin...</option>';
-  hours.forEach(function(h){ var diff = h2n(h)-sn; if(diff>0&&diff<=10) es.innerHTML+='<option>'+h+'</option>'; });
-  document.getElementById('alertConflict').style.display = 'none';
-  document.getElementById('alertOk').style.display = 'none';
-  document.getElementById('btnBook').className = 'btn-book-slot';
+  hours.forEach(function(h){
+    var diff = h2n(h) - sn;
+    if (diff > 0 && diff <= 10) {
+      // Comprobar si la franja inicio→h tiene alguna hora bloqueada
+      var conflict = blockedSlots.some(function(o){
+        var oS = h2n(o.horaInicio), oE = h2n(o.horaFin);
+        if (oE <= oS) oE += 24;
+        return sn < oE && h2n(h) > oS;
+      });
+      es.innerHTML += '<option'+(conflict?' disabled style="color:#555"':'')+' value="'+h+'">'+h+(conflict?' (no disponible)':'')+'</option>';
+    }
+  });
+
+  document.getElementById('waSelectedTime').className = 'wa-selected-time';
+  document.getElementById('btnWhatsapp').className = 'btn-whatsapp-book';
 }
 
 function onEndChange() {
   var sv = document.getElementById('cli_start').value;
   var ev = document.getElementById('cli_end').value;
-  if (!sv || !ev) return;
-  var sn = h2n(sv), en = h2n(ev);
-  var occ = document.getElementById('cli_start')._occ || [];
-  var conflict = occ.some(function(o){
-    var oS = h2n(o.horaInicio), oE = h2n(o.horaFin);
-    if (oE <= oS) oE += 24;
-    return sn < oE && en > oS;
-  });
-  document.getElementById('alertConflict').style.display = conflict ? 'block' : 'none';
-  document.getElementById('alertOk').style.display       = !conflict ? 'block' : 'none';
-  document.getElementById('btnBook').className = 'btn-book-slot' + (conflict ? '' : ' show');
+
+  if (!sv || !ev) {
+    document.getElementById('waSelectedTime').className = 'wa-selected-time';
+    document.getElementById('btnWhatsapp').className = 'btn-whatsapp-book';
+    return;
+  }
+
+  // Mostrar resumen y botón WhatsApp
+  var p = G.selectedDate.split('-');
+  var dateStr = parseInt(p[2]) + ' de ' + MONTHSES[parseInt(p[1])-1] + ' de ' + p[0];
+  document.getElementById('waSelectedTime').textContent = '✓ ' + dateStr + '  ·  ' + sv + ' — ' + ev;
+  document.getElementById('waSelectedTime').className = 'wa-selected-time show';
+  document.getElementById('btnWhatsapp').className = 'btn-whatsapp-book show';
 }
 
-function confirmTime() {
+// ============================================================
+//  ABRIR WHATSAPP — el clic final del cliente
+// ============================================================
+function openWhatsApp() {
   var sv = document.getElementById('cli_start').value;
   var ev = document.getElementById('cli_end').value;
-  if (!sv || !ev) return;
-  document.getElementById('f_hi').value = sv;
-  document.getElementById('f_hf').value = ev;
-  document.getElementById('contacto').scrollIntoView({ behavior:'smooth' });
-  toast('Horario: '+sv+' - '+ev+' seleccionado');
+  if (!sv || !ev || !G.selectedDate) return;
+
+  var p = G.selectedDate.split('-');
+  var dateStr = parseInt(p[2]) + ' de ' + MONTHSES[parseInt(p[1])-1] + ' de ' + p[0];
+
+  var msg = 'Hola Alberto! Me interesa reservarte para el ' + dateStr
+          + ', de ' + sv + ' a ' + ev + '. ¿Está disponible y cuál sería el precio?';
+
+  var url = 'https://wa.me/' + WA_NUMBER + '?text=' + encodeURIComponent(msg);
+  window.open(url, '_blank');
 }
 
+// ============================================================
+//  ADMIN: añadir / borrar franjas bloqueadas
+// ============================================================
 function handleDelete(el) {
   var id = el.getAttribute('data-id');
   if (id) deleteSlot(id);
@@ -831,13 +925,13 @@ function addSlot() {
     fecha:      G.selectedDate,
     horaInicio: document.getElementById('asl_start').value,
     horaFin:    document.getElementById('asl_end').value,
-    tipo:       'ocupado',
+    tipo:       'bloqueado',
     notas:      document.getElementById('asl_notas').value
   };
   gasCall('addDisponibilidad', { data: data }).then(function(r){
     if (r.ok) {
-      G.slots.push({ id:r.id, fecha:data.fecha, horaInicio:data.horaInicio, horaFin:data.horaFin, tipo:'ocupado', notas:data.notas });
-      renderCal(); selectDay(G.selectedDate); toast('Franja guardada');
+      G.slots.push({ id:r.id, fecha:data.fecha, horaInicio:data.horaInicio, horaFin:data.horaFin, tipo:'bloqueado', notas:data.notas });
+      renderCal(); selectDay(G.selectedDate); toast('Franja bloqueada guardada');
       document.getElementById('asl_notas').value = '';
     } else {
       toast('Error: ' + (r.error || 'No autorizado'));
@@ -846,11 +940,11 @@ function addSlot() {
 }
 
 function deleteSlot(id) {
-  if (!confirm('¿Borrar esta franja?')) return;
+  if (!confirm('¿Borrar esta franja bloqueada?')) return;
   gasCall('deleteDisponibilidad', { id: id }).then(function(r){
     if (r.ok) {
       G.slots = G.slots.filter(function(s){ return s.id !== id; });
-      renderCal(); selectDay(G.selectedDate); toast('Eliminado');
+      renderCal(); selectDay(G.selectedDate); toast('Franja eliminada');
     } else {
       toast('Error: ' + (r.error || 'No autorizado'));
     }
@@ -858,7 +952,7 @@ function deleteSlot(id) {
 }
 
 // ============================================================
-//  FORMULARIO DE CONTACTO
+//  FORMULARIO DE CONTACTO (sección contacto — opcional)
 // ============================================================
 function enviarSolicitud(e) {
   e.preventDefault();
@@ -870,29 +964,29 @@ function enviarSolicitud(e) {
     email:      document.getElementById('f_email').value.trim(),
     telefono:   document.getElementById('f_tel').value.trim(),
     fecha:      document.getElementById('f_fecha').value,
-    horaInicio: document.getElementById('f_hi').value,
-    horaFin:    document.getElementById('f_hf').value,
+    horaInicio: '',
+    horaFin:    '',
     tipoEvento: document.getElementById('f_tipo').value,
     lugar:      document.getElementById('f_lugar').value.trim(),
     mensaje:    document.getElementById('f_msg').value.trim()
   };
   gasCall('enviarSolicitud', { data: data }).then(function(r){
-    btn.disabled = false; btn.textContent = 'Enviar solicitud';
+    btn.disabled = false; btn.textContent = 'Enviar consulta';
     msg.style.display = 'block';
     if (r.ok) {
       msg.className = 'form-msg ok';
-      msg.textContent = 'Solicitud enviada. Te confirmaré en menos de 24 horas.';
-      toast('Solicitud enviada!');
+      msg.textContent = 'Consulta enviada. Te respondo en menos de 24 horas.';
+      toast('Consulta enviada!');
       e.target.reset();
     } else {
       msg.className = 'form-msg err';
       msg.textContent = 'Error: ' + (r.error || 'Inténtalo de nuevo');
     }
   }).catch(function(){
-    btn.disabled = false; btn.textContent = 'Enviar solicitud';
+    btn.disabled = false; btn.textContent = 'Enviar consulta';
     msg.style.display = 'block';
     msg.className = 'form-msg err';
-    msg.textContent = 'Error de conexión. Escríbeme directamente por email.';
+    msg.textContent = 'Error de conexión. Escríbeme directamente por WhatsApp.';
   });
 }
 
@@ -1009,7 +1103,9 @@ document.addEventListener('DOMContentLoaded', function(){
   document.querySelectorAll('.reveal').forEach(function(el){ obs.observe(el); });
 });
 </script>
- <a href="https://wa.me/34658023238?text=Hola%20Alberto,%20estoy%20interesado%20en%20contratarte%20para%20un%20evento" target="_blank" id="waFloat">💬</a>
+
+<!-- BOTÓN WHATSAPP FLOTANTE -->
+<a href="https://wa.me/34658023238?text=Hola%20Alberto,%20estoy%20interesado%20en%20contratarte%20para%20un%20evento" target="_blank" id="waFloat">💬</a>
 
 <style>
 #waFloat{
@@ -1029,18 +1125,10 @@ document.addEventListener('DOMContentLoaded', function(){
   box-shadow:0 8px 20px rgba(0,0,0,.3);
   z-index:9999;
 }
-  @media(max-width:768px){
-  #waFloat{
-    right:14px;
-    bottom:80px;
-    width:54px;
-    height:54px;
-    font-size:24px;
-  }
-  }   
-    html, body {
-  overflow-x: hidden;
+@media(max-width:768px){
+  #waFloat{ right:14px; bottom:80px; width:54px; height:54px; font-size:24px; }
 }
-</style> 
+html,body{ overflow-x:hidden; }
+</style>
 </body>
 </html>
