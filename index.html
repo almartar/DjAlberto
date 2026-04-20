@@ -286,16 +286,19 @@ nav a.on::after{content:'';position:absolute;top:0;left:0;right:0;height:2px;bac
       <div style="width:50px;height:2px;background:var(--gold);margin-bottom:36px;"></div>
       <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px;">
         <div style="background:#0d0d0d;border:1px solid var(--line);padding:28px;text-align:center;">
+          <img src="altavoz.png" alt="Altavoz Mark" style="width:100%;max-height:180px;object-fit:contain;margin-bottom:14px;filter:grayscale(30%);">
           <div style="font-family:'Bebas Neue',sans-serif;font-size:1.4em;letter-spacing:2px;margin-bottom:8px;">Sonido</div>
           <div style="color:var(--gold);font-size:.75em;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:8px;">2 × Mark 400W reales</div>
           <div style="color:var(--muted);font-size:.78em;line-height:1.7;">Potencia real garantizada para cualquier espacio.</div>
         </div>
         <div style="background:#0d0d0d;border:1px solid var(--line);padding:28px;text-align:center;">
+          <img src="luces.png" alt="Barra LED" style="width:100%;max-height:180px;object-fit:contain;margin-bottom:14px;filter:grayscale(20%);">
           <div style="font-family:'Bebas Neue',sans-serif;font-size:1.4em;letter-spacing:2px;margin-bottom:8px;">Iluminación</div>
           <div style="color:var(--gold);font-size:.75em;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:8px;">Barra LED multiefecto</div>
           <div style="color:var(--muted);font-size:.78em;line-height:1.7;">Juego de luces LED con trípode incluido.</div>
         </div>
         <div style="background:#0d0d0d;border:1px solid var(--line);padding:28px;text-align:center;">
+          <img src="djfoto.png" alt="DJ Alberto Marti" style="width:100%;max-height:180px;object-fit:cover;object-position:center 20%;margin-bottom:14px;filter:grayscale(20%);">
           <div style="font-family:'Bebas Neue',sans-serif;font-size:1.4em;letter-spacing:2px;margin-bottom:8px;">Mezcla</div>
           <div style="color:var(--gold);font-size:.75em;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:8px;">Equipo DJ + PC propio</div>
           <div style="color:var(--muted);font-size:.78em;line-height:1.7;">Todo incluido. No necesitas contratar nada más.</div>
@@ -395,11 +398,10 @@ nav a.on::after{content:'';position:absolute;top:0;left:0;right:0;height:2px;bac
         <div class="cli-fields" id="cliFields">
           <div class="cli-row">
             <div class="cli-g"><label>Tu nombre *</label><input type="text" id="cli_nombre" placeholder="Nombre y apellido"></div>
-            <div class="cli-g"><label>WhatsApp *</label><input type="tel" id="cli_tel" placeholder="+34 600 000 000"></div>
+            <div class="cli-g"><label>Ubicación del evento *</label><input type="text" id="cli_ubicacion" placeholder="Ciudad, sala, finca..."></div>
           </div>
           <div class="cli-row">
-            <div class="cli-g"><label>Ubicación del evento *</label><input type="text" id="cli_ubicacion" placeholder="Ciudad, sala, finca..."></div>
-            <div class="cli-g">
+            <div class="cli-g" style="grid-column:1/-1;">
               <label>Equipamiento</label>
               <select id="cli_equipo">
                 <option value="Con equipo completo">Con equipo completo (sonido + luces + DJ)</option>
@@ -588,8 +590,8 @@ html,body{overflow-x:hidden;}
 //  CONFIG — edita solo estas variables
 // ============================================================
 var GAS_URL    = 'https://script.google.com/macros/s/AKfycbxlILj3qI2sLfXFOqLyGeSJ-adWvMbMwdZoOjiUpMaPpr7eIxZmqel1NthfDet1uHIJ6w/exec';
-var HERO_PHOTO = 'https://i.imgur.com/xiUZX5l.png';
-var BIO_PHOTO  = 'https://i.imgur.com/wvRoFS1.png';
+var HERO_PHOTO = 'djfoto.png';
+var BIO_PHOTO  = 'djfoto.png';
 var WA_NUMBER  = '34658023238';
 
 // ============================================================
@@ -869,7 +871,6 @@ function openWhatsApp() {
   var sv        = document.getElementById('cli_start').value;
   var ev        = document.getElementById('cli_end').value;
   var nombre    = document.getElementById('cli_nombre').value.trim();
-  var tel       = document.getElementById('cli_tel').value.trim();
   var ubicacion = document.getElementById('cli_ubicacion').value.trim();
   var equipo    = document.getElementById('cli_equipo').value;
 
@@ -884,12 +885,11 @@ function openWhatsApp() {
     + ', de ' + sv + ' a ' + ev + '.'
     + '\n📍 Ubicación: ' + ubicacion
     + '\n🎛️ Equipamiento: ' + equipo
-    + (tel ? '\n📱 Mi WhatsApp: ' + tel : '')
     + '\n¿Está disponible y cuál sería el precio?';
 
   // Notificar al GAS para que llegue Telegram al admin
   gasCall('notificarContacto', {
-    data: { nombre: nombre, telefono: tel, fecha: G.selectedDate,
+    data: { nombre: nombre, fecha: G.selectedDate,
             horaInicio: sv, horaFin: ev, ubicacion: ubicacion, equipo: equipo }
   });
 
