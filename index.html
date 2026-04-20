@@ -11,13 +11,12 @@
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
 :root{
   --black:#000;--white:#fff;--gold:#c9a84c;
-  --red:#e63030;--green:#00c864;--blue:#3b82f6;
+  --red:#e63030;--green:#00c864;
   --muted:rgba(255,255,255,.45);--line:rgba(255,255,255,.1);
   --bg2:#0a0a0a;--bg3:#111;
 }
 html{scroll-behavior:smooth;}
 body{font-family:'Montserrat',sans-serif;background:var(--black);color:var(--white);overflow-x:hidden;}
-*,*::before,*::after{box-sizing:border-box;}
 
 /* HERO */
 #hero{position:relative;height:100vh;min-height:600px;display:flex;align-items:flex-start;overflow:hidden;}
@@ -50,9 +49,8 @@ nav a.on::after{content:'';position:absolute;top:0;left:0;right:0;height:2px;bac
 
 /* BIO */
 #bio-sec{display:grid;grid-template-columns:1fr 1fr;gap:80px;align-items:center;}
-.bio-img{aspect-ratio:3/4;background:var(--bg3);overflow:hidden;}
-.bio-img img{width:100%;height:100%;object-fit:cover;object-position:center 20%;filter:grayscale(100%);transition:filter .5s;}
-.bio-img:hover img{filter:grayscale(100%);}
+.bio-img{aspect-ratio:3/4;background:var(--bg3);overflow:hidden;position:relative;}
+.bio-img img{width:100%;height:100%;object-fit:cover;object-position:center 20%;filter:grayscale(100%);}
 .bio-ph{width:100%;height:100%;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:8px;background:linear-gradient(135deg,#0d0d0d,#1a1a1a);}
 .bio-ph span:first-child{font-family:'Bebas Neue',sans-serif;font-size:6em;color:rgba(255,255,255,.04);letter-spacing:4px;}
 .bio-ph span:last-child{font-size:.6em;letter-spacing:4px;color:var(--gold);text-transform:uppercase;}
@@ -61,7 +59,7 @@ nav a.on::after{content:'';position:absolute;top:0;left:0;right:0;height:2px;bac
 .bio-tag{padding:5px 14px;border:1px solid var(--line);font-size:.62em;letter-spacing:2px;text-transform:uppercase;color:var(--muted);font-weight:600;}
 
 /* SERVICIOS */
-#svc-wrap{background:#060606;padding:100px 0;margin:0;}
+#svc-wrap{background:#060606;padding:100px 0;}
 #svc-wrap .inner{max-width:1200px;margin:0 auto;padding:0 60px;}
 .svc-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);margin-top:50px;}
 .svc{background:#060606;padding:48px 38px;transition:background .3s;}
@@ -77,9 +75,9 @@ nav a.on::after{content:'';position:absolute;top:0;left:0;right:0;height:2px;bac
 .cal-top{display:flex;align-items:center;justify-content:space-between;padding:20px 24px;border-bottom:1px solid var(--line);flex-wrap:wrap;gap:12px;}
 .cal-top-left{display:flex;align-items:center;gap:14px;}
 .cal-month-label{font-family:'Bebas Neue',sans-serif;font-size:1.8em;letter-spacing:3px;}
-.cal-nav-btns{display:flex;gap:4px;}
 .cal-nav-btns button{background:transparent;border:1px solid var(--line);color:var(--white);width:32px;height:32px;cursor:pointer;font-size:.9em;transition:all .2s;}
 .cal-nav-btns button:hover{border-color:var(--gold);color:var(--gold);}
+.cal-nav-btns{display:flex;gap:4px;}
 .cal-today-btn{padding:6px 14px;background:transparent;border:1px solid var(--line);color:var(--muted);font-family:'Montserrat',sans-serif;font-size:.62em;letter-spacing:2px;text-transform:uppercase;cursor:pointer;transition:all .2s;}
 .cal-today-btn:hover{border-color:var(--gold);color:var(--gold);}
 .cal-legend-top{display:flex;gap:16px;flex-wrap:wrap;}
@@ -106,13 +104,13 @@ nav a.on::after{content:'';position:absolute;top:0;left:0;right:0;height:2px;bac
 .cal-sidebar{display:none;border-top:1px solid var(--line);padding:28px;background:#030303;}
 .cal-sidebar.visible{display:block;}
 .cal-sidebar-date{font-family:'Bebas Neue',sans-serif;font-size:1.6em;letter-spacing:2px;margin-bottom:22px;}
-.cal-sidebar-slot{display:flex;align-items:center;justify-content:space-between;padding:11px 14px;border:1px solid var(--line);margin-bottom:8px;font-size:.8em;gap:12px;}
-.slt-time{font-weight:600;letter-spacing:1px;}
-.slt-note{font-size:.75em;color:var(--muted);letter-spacing:.5px;}
-.slt-btn-del{padding:5px 12px;border:none;background:rgba(230,48,48,.15);color:var(--red);font-family:'Montserrat',sans-serif;font-size:.7em;font-weight:700;letter-spacing:1px;text-transform:uppercase;cursor:pointer;transition:opacity .2s;}
+.cal-sidebar-slot{display:flex;align-items:flex-start;justify-content:space-between;padding:12px 14px;border:1px solid rgba(230,48,48,.25);background:rgba(230,48,48,.04);margin-bottom:8px;gap:12px;flex-wrap:wrap;}
+.slt-time{font-size:.85em;font-weight:700;letter-spacing:1px;}
+.slt-note{font-size:.75em;color:var(--muted);letter-spacing:.5px;margin-top:3px;}
+.slt-btn-del{padding:6px 14px;border:none;background:rgba(230,48,48,.15);color:var(--red);font-family:'Montserrat',sans-serif;font-size:.68em;font-weight:700;letter-spacing:1px;text-transform:uppercase;cursor:pointer;transition:opacity .2s;flex-shrink:0;}
 .slt-btn-del:hover{opacity:.75;}
 
-/* ADMIN FORM */
+/* FORM AÑADIR SLOT ADMIN */
 .add-slot-form{background:var(--bg3);border:1px solid var(--line);padding:20px;margin-bottom:20px;}
 .add-slot-title{font-size:.62em;letter-spacing:3px;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:14px;}
 .asl-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:10px;}
@@ -123,59 +121,55 @@ nav a.on::after{content:'';position:absolute;top:0;left:0;right:0;height:2px;bac
 .btn-add{width:100%;background:var(--gold);color:#000;border:none;padding:11px;font-family:'Montserrat',sans-serif;font-size:.7em;font-weight:700;letter-spacing:3px;text-transform:uppercase;cursor:pointer;transition:opacity .2s;margin-top:6px;}
 .btn-add:hover{opacity:.85;}
 
-/* CLIENT TIME PICKER — simplificado para flujo WhatsApp */
-.time-picker-wrap{padding:4px 0;}
+/* VISTA CLIENTE — selector de horas + campos */
 .time-picker-label{font-size:.62em;letter-spacing:3px;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:6px;}
 .time-picker-hint{font-size:.72em;color:var(--muted);line-height:1.6;margin-bottom:16px;font-weight:300;}
-.time-picker-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:18px;}
+.time-picker-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:14px;}
 .tpg label{font-size:.6em;letter-spacing:2px;text-transform:uppercase;color:var(--muted);font-weight:600;display:block;margin-bottom:5px;}
 .tpg select{width:100%;background:#0a0a0a;border:1px solid var(--line);color:var(--white);padding:10px 12px;font-family:'Montserrat',sans-serif;font-size:.85em;outline:none;-webkit-appearance:none;cursor:pointer;}
 .tpg select:focus{border-color:var(--gold);}
 .tpg select option{background:#111;}
 .tpg select option:disabled{color:#444;}
+.cli-fields{display:none;flex-direction:column;gap:10px;margin-bottom:14px;}
+.cli-fields.show{display:flex;}
+.cli-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
+.cli-g label{font-size:.6em;letter-spacing:2px;text-transform:uppercase;color:var(--muted);font-weight:600;display:block;margin-bottom:5px;}
+.cli-g input,.cli-g select{width:100%;background:#0a0a0a;border:1px solid var(--line);color:var(--white);padding:10px 12px;font-family:'Montserrat',sans-serif;font-size:.82em;outline:none;-webkit-appearance:none;transition:border-color .2s;}
+.cli-g input:focus,.cli-g select:focus{border-color:var(--gold);}
+.cli-g select option{background:#111;}
+.wa-resumen{display:none;margin-bottom:12px;padding:10px 14px;border:1px solid rgba(37,211,102,.2);background:rgba(37,211,102,.04);font-size:.78em;color:#25D366;letter-spacing:.5px;line-height:1.6;}
+.wa-resumen.show{display:block;}
+.btn-wa{display:none;width:100%;background:#25D366;color:#fff;border:none;padding:15px;font-family:'Montserrat',sans-serif;font-size:.78em;font-weight:700;letter-spacing:3px;text-transform:uppercase;cursor:pointer;transition:opacity .3s,transform .2s;align-items:center;justify-content:center;gap:10px;}
+.btn-wa.show{display:flex;}
+.btn-wa:hover{opacity:.88;transform:translateY(-1px);}
+.btn-wa .wa-icon{font-size:1.3em;}
 
-/* BOTÓN WHATSAPP en sidebar */
-.btn-whatsapp-book{
-  display:none;
-  width:100%;
-  background:#25D366;
-  color:#fff;
-  border:none;
-  padding:15px;
-  font-family:'Montserrat',sans-serif;
-  font-size:.78em;
-  font-weight:700;
-  letter-spacing:3px;
-  text-transform:uppercase;
-  cursor:pointer;
-  transition:opacity .3s, transform .2s;
-  align-items:center;
-  justify-content:center;
-  gap:10px;
-}
-.btn-whatsapp-book.show{display:flex;}
-.btn-whatsapp-book:hover{opacity:.88;transform:translateY(-1px);}
-.btn-whatsapp-book .wa-icon{font-size:1.3em;line-height:1;}
-.wa-selected-time{
-  display:none;
-  margin-bottom:14px;
-  padding:10px 14px;
-  border:1px solid rgba(37,211,102,.25);
-  background:rgba(37,211,102,.05);
-  font-size:.78em;
-  color:#25D366;
-  letter-spacing:.5px;
-}
-.wa-selected-time.show{display:block;}
+/* RESEÑAS */
+#resenas{background:#060606;padding:100px 0;}
+#resenas .inner{max-width:1200px;margin:0 auto;padding:0 60px;}
+.resenas-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:40px;}
+.resena-card{background:#0d0d0d;border:1px solid var(--line);padding:28px;}
+.resena-stars{color:var(--gold);font-size:1.1em;margin-bottom:12px;}
+.resena-texto{color:var(--muted);font-size:.83em;line-height:1.8;font-style:italic;margin-bottom:18px;}
+.resena-autor{display:flex;align-items:center;gap:10px;}
+.resena-avatar{width:36px;height:36px;border-radius:50%;background:var(--gold);display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue',sans-serif;font-size:1em;color:#000;flex-shrink:0;}
+.resena-nombre{font-size:.8em;font-weight:700;}
+.resena-evento{font-size:.7em;color:var(--muted);letter-spacing:1px;text-transform:uppercase;}
+.resena-empty{color:var(--muted);font-size:.85em;padding:40px 0;text-align:center;grid-column:1/-1;}
+.resena-form-wrap{margin-top:50px;background:#0a0a0a;border:1px solid var(--line);padding:32px;}
+.resena-form-title{font-family:'Bebas Neue',sans-serif;font-size:1.5em;letter-spacing:3px;color:var(--gold);margin-bottom:24px;}
+.star-picker{display:flex;gap:6px;margin-bottom:16px;flex-direction:row-reverse;justify-content:flex-end;}
+.star-picker input{display:none;}
+.star-picker label{font-size:1.8em;cursor:pointer;color:var(--line);transition:color .15s;}
+.star-picker input:checked ~ label,.star-picker label:hover,.star-picker label:hover ~ label{color:var(--gold);}
+.resena-admin-card{background:#0d0d0d;border:1px solid var(--line);padding:20px;margin-bottom:12px;display:flex;align-items:flex-start;gap:16px;justify-content:space-between;flex-wrap:wrap;}
+.resena-admin-info{flex:1;min-width:0;}
+.resena-admin-btns{display:flex;gap:8px;flex-shrink:0;}
+.btn-aprobar{padding:7px 14px;background:rgba(0,200,100,.15);color:var(--green);border:none;font-family:'Montserrat',sans-serif;font-size:.7em;font-weight:700;letter-spacing:1px;text-transform:uppercase;cursor:pointer;}
+.btn-rechazar{padding:7px 14px;background:rgba(230,48,48,.15);color:var(--red);border:none;font-family:'Montserrat',sans-serif;font-size:.7em;font-weight:700;letter-spacing:1px;text-transform:uppercase;cursor:pointer;}
 
-/* CONTACTO */
-#contacto .contact-wrap{display:grid;grid-template-columns:1fr 1fr;gap:80px;margin-top:36px;}
-.contact-info p{color:var(--muted);font-size:.85em;line-height:1.9;font-weight:300;margin-bottom:18px;}
-.contact-links{display:flex;flex-direction:column;gap:14px;margin-top:24px;}
-.contact-links a{color:var(--muted);text-decoration:none;font-size:.78em;letter-spacing:1px;display:flex;align-items:center;gap:12px;transition:color .2s;}
-.contact-links a:hover{color:var(--gold);}
-.contact-links .ic{color:var(--gold);}
-form{display:flex;flex-direction:column;gap:14px;}
+/* CONTACTO (oculto) */
+#contacto{display:none;}
 .fr{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
 .fg{display:flex;flex-direction:column;gap:5px;}
 .fg label{font-size:.6em;letter-spacing:2px;text-transform:uppercase;color:var(--muted);font-weight:600;}
@@ -209,30 +203,6 @@ form{display:flex;flex-direction:column;gap:14px;}
 /* TOAST */
 #toast{position:fixed;top:20px;right:20px;z-index:9999;padding:13px 22px;font-size:.78em;letter-spacing:1px;display:none;border-left:3px solid var(--gold);background:rgba(0,0,0,.96);color:var(--white);}
 
-/* RESEÑAS */
-#resenas{background:#060606;padding:100px 0;margin:0;}
-#resenas .inner{max-width:1200px;margin:0 auto;padding:0 60px;}
-.resenas-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:40px;}
-.resena-card{background:#0d0d0d;border:1px solid var(--line);padding:28px;}
-.resena-stars{color:var(--gold);font-size:1.1em;margin-bottom:12px;}
-.resena-texto{color:var(--muted);font-size:.83em;line-height:1.8;font-style:italic;margin-bottom:18px;}
-.resena-autor{display:flex;align-items:center;gap:10px;}
-.resena-avatar{width:36px;height:36px;border-radius:50%;background:var(--gold);display:flex;align-items:center;justify-content:center;font-family:'Bebas Neue',sans-serif;font-size:1em;color:#000;flex-shrink:0;}
-.resena-nombre{font-size:.8em;font-weight:700;color:var(--white);}
-.resena-evento{font-size:.7em;color:var(--muted);letter-spacing:1px;text-transform:uppercase;}
-.resena-empty{color:var(--muted);font-size:.85em;padding:40px 0;text-align:center;grid-column:1/-1;}
-.resena-form-wrap{margin-top:50px;background:#0a0a0a;border:1px solid var(--line);padding:32px;}
-.resena-form-title{font-family:'Bebas Neue',sans-serif;font-size:1.5em;letter-spacing:3px;color:var(--gold);margin-bottom:24px;}
-.star-picker{display:flex;gap:6px;margin-bottom:16px;flex-direction:row-reverse;justify-content:flex-end;}
-.star-picker input{display:none;}
-.star-picker label{font-size:1.8em;cursor:pointer;color:var(--line);transition:color .15s;}
-.star-picker input:checked ~ label,.star-picker label:hover,.star-picker label:hover ~ label{color:var(--gold);}
-.resena-admin-card{background:#0d0d0d;border:1px solid var(--line);padding:20px;margin-bottom:12px;display:flex;align-items:flex-start;gap:16px;justify-content:space-between;flex-wrap:wrap;}
-.resena-admin-info{flex:1;min-width:0;}
-.resena-admin-btns{display:flex;gap:8px;flex-shrink:0;}
-.btn-aprobar{padding:7px 14px;background:rgba(0,200,100,.15);color:var(--green);border:none;font-family:'Montserrat',sans-serif;font-size:.7em;font-weight:700;letter-spacing:1px;text-transform:uppercase;cursor:pointer;}
-.btn-rechazar{padding:7px 14px;background:rgba(230,48,48,.15);color:var(--red);border:none;font-family:'Montserrat',sans-serif;font-size:.7em;font-weight:700;letter-spacing:1px;text-transform:uppercase;cursor:pointer;}
-
 /* UTILS */
 @keyframes fadeUp{from{opacity:0;transform:translateY(28px);}to{opacity:1;transform:none;}}
 .reveal{opacity:0;transform:translateY(36px);transition:opacity .7s,transform .7s;}
@@ -244,14 +214,12 @@ form{display:flex;flex-direction:column;gap:14px;}
   .hero-content{padding:36px 20px 0;}
   .hero-name{font-size:4em;}
   #heroBg{background-position:35% top !important;background-size:cover !important;}
-  #bio-sec{grid-template-columns:1fr;gap:36px;}
+  #bio-sec{grid-template-columns:1fr;}
   .svc-grid{grid-template-columns:1fr;}
-  #contacto .contact-wrap{grid-template-columns:1fr;gap:40px;}
-  .fr,.asl-row,.time-picker-grid{grid-template-columns:1fr;}
+  .fr,.asl-row,.time-picker-grid,.cli-row{grid-template-columns:1fr;}
   nav a{padding:13px 12px;font-size:.56em;letter-spacing:1.5px;}
   .dj-footer{padding:24px 20px;flex-direction:column;text-align:center;}
-  #svc-wrap .inner{padding:0 20px;}
-  #resenas .inner{padding:0 20px;}
+  #svc-wrap .inner,#resenas .inner{padding:0 20px;}
   .resenas-grid{grid-template-columns:1fr;}
 }
 </style>
@@ -270,7 +238,7 @@ form{display:flex;flex-direction:column;gap:14px;}
     <p class="hero-sub">Bodas &nbsp;·&nbsp; Eventos &nbsp;·&nbsp; Clubs</p>
     <div class="hero-cta">
       <a href="#calendario" class="btn-gold">Ver disponibilidad</a>
-      <a href="#contacto" class="btn-out">Más información</a>
+      <a href="#resenas" class="btn-out">Opiniones</a>
     </div>
   </div>
 </div>
@@ -279,27 +247,22 @@ form{display:flex;flex-direction:column;gap:14px;}
 <!-- BIO -->
 <div class="sec reveal" id="bio-wrap">
 <div id="bio-sec">
-  <div class="bio-img" style="position:relative;">
-    <div style="position:absolute;bottom:0;left:0;right:0;height:35%;background:linear-gradient(to top,#000 0%,transparent 100%);z-index:2;pointer-events:none;"></div>
-    <div class="bio-ph" id="bioWrap">
-      <span>AM</span><span>Sube tu foto aqui</span>
-    </div>
+  <div class="bio-img">
+    <div style="position:absolute;bottom:0;left:0;right:0;height:35%;background:linear-gradient(to top,#000,transparent);z-index:2;pointer-events:none;"></div>
+    <div class="bio-ph" id="bioWrap"><span>AM</span><span>Sube tu foto aqui</span></div>
   </div>
   <div>
     <span class="sec-label">Sobre mí</span>
     <h2 class="sec-title">El artista<br>detrás<br>de la música</h2>
     <div class="sec-div"></div>
     <p>Antes de que existieran los CDJs, antes de que Spotify fuera ni una idea, yo ya estaba detrás de los aparatos — empezando con un radio cassette, grabando mezclas a mano, pasando luego al vinilo y sin parar hasta hoy. Con base en <strong style="color:var(--white)">Xàtiva (Valencia)</strong>, llevo décadas creando momentos que la gente recuerda mucho después de que la música pare.</p>
-    <p>Tengo una colección propia de cientos de vinilos de los 80 hasta los 2000, todos ripeados y organizados en una biblioteca digital propia. Mi especialidad es el <strong style="color:var(--gold)">Remember</strong>: Pop, House, Dance, Techno y Progressive de esa época dorada — y se nota la diferencia cuando quien pone la música la vivió de primera mano.</p>
-    <p>Cada evento es único. Me involucro con el cliente para construir la escena perfecta para ese momento tan especial, con el criterio y el oído de quien empezó a mezclar antes de que hubiera manual de instrucciones.</p>
+    <p>Tengo una colección propia de cientos de vinilos de los 80 hasta los 2000, todos ripeados y organizados en una biblioteca digital propia. Mi especialidad es el <strong style="color:var(--gold)">Remember</strong>: Pop, House, Dance, Techno y Progressive de esa época dorada.</p>
+    <p>Cada evento es único. Me involucro con el cliente para construir la escena perfecta, con el criterio y el oído de quien empezó a mezclar antes de que hubiera manual de instrucciones.</p>
     <div class="bio-tags">
       <span class="bio-tag" style="color:var(--gold);border-color:rgba(201,168,76,.4)">Remember</span>
-      <span class="bio-tag">Pop 80/90</span>
-      <span class="bio-tag">House</span>
-      <span class="bio-tag">Dance</span>
-      <span class="bio-tag">Techno</span>
-      <span class="bio-tag">Progressive</span>
-      <span class="bio-tag">Comercial</span>
+      <span class="bio-tag">Pop 80/90</span><span class="bio-tag">House</span>
+      <span class="bio-tag">Dance</span><span class="bio-tag">Techno</span>
+      <span class="bio-tag">Progressive</span><span class="bio-tag">Comercial</span>
       <span class="bio-tag">Bodas</span>
       <span class="bio-tag" style="border-color:rgba(255,255,255,.2)">🎵 Vinilo desde los 80</span>
     </div>
@@ -313,8 +276,8 @@ form{display:flex;flex-direction:column;gap:14px;}
     <span class="sec-label reveal">Servicios</span>
     <h2 class="sec-title reveal">Lo que ofrezco</h2>
     <div class="svc-grid">
-      <div class="svc reveal"><span class="svc-icon">💍</span><div class="svc-title">Bodas</div><p class="svc-desc">Desde el cocktail hasta el cierre de pista. Sets personalizados para el día más especial, incluyendo sesiones Remember si el público lo pide.</p></div>
-      <div class="svc reveal"><span class="svc-icon">🎉</span><div class="svc-title">Eventos</div><p class="svc-desc">Cumpleaños, comuniones, fiestas privadas y corporativas. Música a medida para cada ocasión.</p></div>
+      <div class="svc reveal"><span class="svc-icon">💍</span><div class="svc-title">Bodas</div><p class="svc-desc">Desde el cocktail hasta el cierre de pista. Sets personalizados para el día más especial.</p></div>
+      <div class="svc reveal"><span class="svc-icon">🎉</span><div class="svc-title">Eventos</div><p class="svc-desc">Cumpleaños, comuniones, fiestas privadas y corporativas. Música a medida.</p></div>
       <div class="svc reveal"><span class="svc-icon">🎧</span><div class="svc-title">Clubs y Salas</div><p class="svc-desc">Residencias y sesiones puntuales. Energía constante y lectura precisa del público.</p></div>
     </div>
     <div style="margin-top:1px;background:#080808;border:1px solid rgba(255,255,255,.07);padding:48px 38px;" class="reveal">
@@ -325,36 +288,32 @@ form{display:flex;flex-direction:column;gap:14px;}
         <div style="background:#0d0d0d;border:1px solid var(--line);padding:28px;text-align:center;">
           <div style="font-family:'Bebas Neue',sans-serif;font-size:1.4em;letter-spacing:2px;margin-bottom:8px;">Sonido</div>
           <div style="color:var(--gold);font-size:.75em;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:8px;">2 × Mark 400W reales</div>
-          <div style="color:var(--muted);font-size:.78em;line-height:1.7;">Potencia real garantizada para cualquier espacio. Sin distorsión a máximo volumen.</div>
+          <div style="color:var(--muted);font-size:.78em;line-height:1.7;">Potencia real garantizada para cualquier espacio.</div>
         </div>
         <div style="background:#0d0d0d;border:1px solid var(--line);padding:28px;text-align:center;">
           <div style="font-family:'Bebas Neue',sans-serif;font-size:1.4em;letter-spacing:2px;margin-bottom:8px;">Iluminación</div>
           <div style="color:var(--gold);font-size:.75em;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:8px;">Barra LED multiefecto</div>
-          <div style="color:var(--muted);font-size:.78em;line-height:1.7;">Juego de luces LED con trípode incluido. Ambiente profesional desde el primer momento.</div>
+          <div style="color:var(--muted);font-size:.78em;line-height:1.7;">Juego de luces LED con trípode incluido.</div>
         </div>
         <div style="background:#0d0d0d;border:1px solid var(--line);padding:28px;text-align:center;">
           <div style="font-family:'Bebas Neue',sans-serif;font-size:1.4em;letter-spacing:2px;margin-bottom:8px;">Mezcla</div>
           <div style="color:var(--gold);font-size:.75em;font-weight:700;letter-spacing:2px;text-transform:uppercase;margin-bottom:8px;">Equipo DJ + PC propio</div>
-          <div style="color:var(--muted);font-size:.78em;line-height:1.7;">Todo el equipo de mezcla y PC profesional incluido. No necesitas contratar nada más.</div>
+          <div style="color:var(--muted);font-size:.78em;line-height:1.7;">Todo incluido. No necesitas contratar nada más.</div>
         </div>
       </div>
     </div>
-    <div style="margin-top:1px;background:linear-gradient(135deg,#0d0d0d,#111);border:1px solid rgba(201,168,76,.2);padding:40px 38px;display:grid;grid-template-columns:1fr 2fr;gap:40px;align-items:center;">
+    <div style="margin-top:1px;background:linear-gradient(135deg,#0d0d0d,#111);border:1px solid rgba(201,168,76,.2);padding:40px 38px;display:grid;grid-template-columns:1fr 2fr;gap:40px;align-items:center;" class="reveal">
       <div>
         <div style="font-family:'Bebas Neue',sans-serif;font-size:3em;letter-spacing:3px;color:var(--gold);line-height:1;">Remember</div>
         <div style="font-size:.65em;letter-spacing:3px;text-transform:uppercase;color:var(--muted);margin-top:6px;">Especialidad</div>
       </div>
       <div>
-        <p style="color:var(--muted);font-size:.82em;line-height:1.8;font-weight:300;">
-          Pop, House, Dance, Techno y Progressive de los <strong style="color:var(--white)">años 80 y 90</strong>.
-          Una colección de miles de vinilos originales de esa época, todos ripeados en una biblioteca digital propia.
-          Música que se siente diferente cuando quien la pone la vivió desde el principio.
-        </p>
+        <p style="color:var(--muted);font-size:.82em;line-height:1.8;font-weight:300;">Pop, House, Dance, Techno y Progressive de los <strong style="color:var(--white)">años 80 y 90</strong>. Colección de vinilos originales ripeados en biblioteca digital propia.</p>
         <div style="display:flex;gap:10px;margin-top:16px;flex-wrap:wrap;">
           <span style="padding:4px 12px;border:1px solid rgba(201,168,76,.3);font-size:.62em;letter-spacing:2px;text-transform:uppercase;color:var(--gold);">Años 80</span>
           <span style="padding:4px 12px;border:1px solid rgba(201,168,76,.3);font-size:.62em;letter-spacing:2px;text-transform:uppercase;color:var(--gold);">Años 90</span>
           <span style="padding:4px 12px;border:1px solid rgba(201,168,76,.3);font-size:.62em;letter-spacing:2px;text-transform:uppercase;color:var(--gold);">Años 2000</span>
-          <span style="padding:4px 12px;border:1px solid rgba(255,255,255,.1);font-size:.62em;letter-spacing:2px;text-transform:uppercase;color:var(--muted);">🎵 Colección en vinilo</span>
+          <span style="padding:4px 12px;border:1px solid rgba(255,255,255,.1);font-size:.62em;letter-spacing:2px;text-transform:uppercase;color:var(--muted);">🎵 Vinilo original</span>
         </div>
       </div>
     </div>
@@ -369,8 +328,8 @@ form{display:flex;flex-direction:column;gap:14px;}
   <h2 class="sec-title">Consulta fechas<br>y reserva</h2>
   <div class="sec-div"></div>
   <p style="color:var(--muted);font-size:.82em;margin-bottom:24px;line-height:1.7;">
-    Elige el día y la franja horaria. Si está disponible, te conectarás directamente conmigo por WhatsApp para cerrar la reserva.
-    <span id="adminHint" style="color:var(--gold);cursor:pointer;margin-left:8px;display:none;font-size:.8em;letter-spacing:2px;"></span>
+    Elige el día y tu franja horaria. Si está disponible, rellena tus datos y te escribiré por WhatsApp con el precio.
+    <span id="adminHint" style="display:none;color:var(--gold);margin-left:8px;font-size:.8em;letter-spacing:2px;"></span>
   </p>
   <div class="cal-container">
     <div class="cal-top">
@@ -394,104 +353,72 @@ form{display:flex;flex-direction:column;gap:14px;}
       <div class="cal-wd" style="color:var(--gold)">Dom</div>
     </div>
     <div class="cal-grid" id="calGrid"><div class="loader">Cargando...</div></div>
+
     <div class="cal-sidebar" id="calSidebar">
       <div class="cal-sidebar-date" id="sidebarDate"></div>
 
-      <!-- VISTA ADMIN -->
+      <!-- ADMIN -->
       <div id="adminView" style="display:none;">
         <div class="add-slot-form">
-          <div class="add-slot-title">+ Marcar franja como bloqueada</div>
+          <div class="add-slot-title">+ Bloquear franja</div>
           <div class="asl-row">
             <div class="asl-g"><label>Hora inicio</label><select id="asl_start"></select></div>
             <div class="asl-g"><label>Hora fin</label><select id="asl_end"></select></div>
           </div>
-          <div class="asl-g" style="margin-bottom:10px"><label>Notas internas</label><input type="text" id="asl_notas" placeholder="Ej: Boda Garcia..."></div>
-          <button class="btn-add" onclick="addSlot()">Guardar franja bloqueada</button>
+          <div class="asl-g" style="margin-bottom:10px;">
+            <label>Notas (cliente, evento...)</label>
+            <input type="text" id="asl_notas" placeholder="Ej: Boda García, Xàtiva">
+          </div>
+          <button class="btn-add" onclick="addSlot()">Bloquear</button>
         </div>
         <div id="adminSlots"></div>
       </div>
 
-      <!-- VISTA CLIENTE — flujo WhatsApp directo -->
+      <!-- CLIENTE -->
       <div id="clientView">
-        <div class="time-picker-wrap">
-          <div class="time-picker-label">Elige tu horario</div>
-          <p class="time-picker-hint">Selecciona inicio y fin. Si está disponible, te abrirá WhatsApp directamente para hablar conmigo y cerrar la reserva.</p>
-          <div class="time-picker-grid">
-            <div class="tpg">
-              <label>Hora inicio</label>
-              <select id="cli_start" onchange="onStartChange()">
-                <option value="">Selecciona...</option>
-              </select>
-            </div>
-            <div class="tpg">
-              <label>Hora fin</label>
-              <select id="cli_end" onchange="onEndChange()">
-                <option value="">Primero elige inicio</option>
+        <div class="time-picker-label">Elige tu horario</div>
+        <p class="time-picker-hint">Selecciona inicio, fin y tus datos. Te escribiré por WhatsApp con el precio en cuanto pueda.</p>
+        <div class="time-picker-grid">
+          <div class="tpg">
+            <label>Hora inicio</label>
+            <select id="cli_start" onchange="onStartChange()">
+              <option value="">Selecciona...</option>
+            </select>
+          </div>
+          <div class="tpg">
+            <label>Hora fin</label>
+            <select id="cli_end" onchange="onEndChange()">
+              <option value="">Primero elige inicio</option>
+            </select>
+          </div>
+        </div>
+        <div class="cli-fields" id="cliFields">
+          <div class="cli-row">
+            <div class="cli-g"><label>Tu nombre *</label><input type="text" id="cli_nombre" placeholder="Nombre y apellido"></div>
+            <div class="cli-g"><label>WhatsApp *</label><input type="tel" id="cli_tel" placeholder="+34 600 000 000"></div>
+          </div>
+          <div class="cli-row">
+            <div class="cli-g"><label>Ubicación del evento *</label><input type="text" id="cli_ubicacion" placeholder="Ciudad, sala, finca..."></div>
+            <div class="cli-g">
+              <label>Equipamiento</label>
+              <select id="cli_equipo">
+                <option value="Con equipo completo">Con equipo completo (sonido + luces + DJ)</option>
+                <option value="Solo DJ sin equipo">Solo DJ (sin equipo)</option>
+                <option value="Por confirmar">Por confirmar</option>
               </select>
             </div>
           </div>
-          <!-- Confirmación de horario seleccionado -->
-          <div class="wa-selected-time" id="waSelectedTime"></div>
-          <!-- Botón WhatsApp -->
-          <button class="btn-whatsapp-book" id="btnWhatsapp" onclick="openWhatsApp()">
-            <span class="wa-icon">💬</span>
-            Reservar por WhatsApp
-          </button>
         </div>
+        <div class="wa-resumen" id="waResumen"></div>
+        <button class="btn-wa" id="btnWa" onclick="openWhatsApp()">
+          <span class="wa-icon">💬</span> Contactar por WhatsApp
+        </button>
       </div>
 
     </div>
   </div>
 </div>
 </div>
-</div>
-
-<!-- CONTACTO -->
-<div id="contacto" class="sec reveal">
-  <span class="sec-label">Contacto</span>
-  <h2 class="sec-title">Hablemos de<br>tu evento</h2>
-  <div class="sec-div"></div>
-  <div class="contact-wrap">
-    <div class="contact-info">
-      <p>¿Tienes una fecha en mente? Usa el calendario para elegir tu franja horaria y contacta conmigo directamente por WhatsApp. En menos de 24 horas te confirmo disponibilidad.</p>
-      <p>Una vez acordado el evento, formalizo la reserva con una señal por Bizum o PayPal y la fecha queda bloqueada para ti.</p>
-      <p style="color:var(--gold);font-size:.8em;margin-top:20px;letter-spacing:1px;">💬 Contacto rápido por WhatsApp · 📅 Reserva con señal</p>
-      <div class="contact-links" style="margin-top:28px;">
-        <a href="https://wa.me/34658023238?text=Hola%20Alberto,%20me%20gustaría%20saber%20más%20sobre%20tus%20servicios" target="_blank">
-          <span class="ic">💬</span> WhatsApp: +34 658 023 238
-        </a>
-        <a href="mailto:albertoylucia2011@gmail.com">
-          <span class="ic">✉</span> albertoylucia2011@gmail.com
-        </a>
-      </div>
-    </div>
-    <form onsubmit="enviarSolicitud(event)">
-      <div class="fr">
-        <div class="fg"><label>Nombre *</label><input type="text" id="f_nombre" required placeholder="Tu nombre"></div>
-        <div class="fg"><label>Email *</label><input type="email" id="f_email" required placeholder="tu@email.com"></div>
-      </div>
-      <div class="fr">
-        <div class="fg"><label>Teléfono</label><input type="tel" id="f_tel" placeholder="+34 600 000 000"></div>
-        <div class="fg"><label>Fecha *</label><input type="date" id="f_fecha" required></div>
-      </div>
-      <div class="fg">
-        <label>Tipo de evento *</label>
-        <select id="f_tipo" required>
-          <option value="">Selecciona...</option>
-          <option>Boda</option>
-          <option>Cumpleaños / Fiesta privada</option>
-          <option>Evento corporativo</option>
-          <option>Club / Sala</option>
-          <option>Comunión / Bautizo</option>
-          <option>Otro</option>
-        </select>
-      </div>
-      <div class="fg"><label>Localización</label><input type="text" id="f_lugar" placeholder="Ciudad, sala o espacio"></div>
-      <div class="fg"><label>Mensaje</label><textarea id="f_msg" placeholder="Estilo musical, horario aproximado, detalles..."></textarea></div>
-      <button type="submit" class="btn-submit" id="btnSubmit">Enviar consulta</button>
-      <div class="form-msg" id="formMsg"></div>
-    </form>
-  </div>
 </div>
 
 <!-- RESEÑAS -->
@@ -506,7 +433,11 @@ form{display:flex;flex-direction:column;gap:14px;}
       <div class="fr" style="margin-bottom:14px;">
         <div class="fg"><label>Tu nombre *</label><input type="text" id="r_nombre" placeholder="Nombre"></div>
         <div class="fg"><label>Tipo de evento *</label>
-          <select id="r_evento"><option value="">Selecciona...</option><option>Boda</option><option>Cumpleaños</option><option>Evento corporativo</option><option>Club / Sala</option><option>Otro</option></select>
+          <select id="r_evento">
+            <option value="">Selecciona...</option>
+            <option>Boda</option><option>Cumpleaños</option>
+            <option>Evento corporativo</option><option>Club / Sala</option><option>Otro</option>
+          </select>
         </div>
       </div>
       <div class="fg" style="margin-bottom:14px;"><label>Valoración *</label>
@@ -524,10 +455,62 @@ form{display:flex;flex-direction:column;gap:14px;}
       <button onclick="enviarResena()" class="btn-submit" id="btnResena" style="width:auto;padding:13px 36px;">Enviar opinión</button>
       <div class="form-msg" id="resenaMsg"></div>
     </div>
+    <!-- Panel admin reseñas -->
     <div id="adminResenas" style="display:none;margin-top:40px;">
       <div style="font-family:'Bebas Neue',sans-serif;font-size:1.4em;letter-spacing:3px;color:var(--gold);margin-bottom:20px;">Pendientes de aprobación</div>
-      <div id="resenasPendientes"><p style="color:var(--muted);font-size:.82em;">Sin reseñas pendientes.</p></div>
+      <div id="resenasPendientes"></div>
     </div>
+  </div>
+</div>
+
+<!-- CONTACTO — oculto, reactivar quitando display:none del div#contacto y añadiendo el enlace en el nav -->
+<div id="contacto" class="sec">
+  <span class="sec-label">Contacto</span>
+  <h2 class="sec-title">Hablemos de<br>tu evento</h2>
+  <div class="sec-div"></div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;gap:80px;margin-top:36px;">
+    <div>
+      <p style="color:var(--muted);font-size:.85em;line-height:1.9;font-weight:300;margin-bottom:18px;">¿Tienes una fecha en mente? Usa el calendario para elegir tu franja y te contacto por WhatsApp.</p>
+      <div style="display:flex;flex-direction:column;gap:14px;margin-top:24px;">
+        <a href="https://wa.me/34658023238" target="_blank" style="color:var(--muted);text-decoration:none;font-size:.78em;letter-spacing:1px;display:flex;align-items:center;gap:12px;">
+          <span style="color:var(--gold)">💬</span> WhatsApp: +34 658 023 238
+        </a>
+        <a href="mailto:albertoylucia2011@gmail.com" style="color:var(--muted);text-decoration:none;font-size:.78em;letter-spacing:1px;display:flex;align-items:center;gap:12px;">
+          <span style="color:var(--gold)">✉</span> albertoylucia2011@gmail.com
+        </a>
+      </div>
+    </div>
+    <form onsubmit="enviarFormContacto(event)">
+      <div class="fr">
+        <div class="fg"><label>Nombre *</label><input type="text" id="f_nombre" required placeholder="Tu nombre"></div>
+        <div class="fg"><label>Email *</label><input type="email" id="f_email" required placeholder="tu@email.com"></div>
+      </div>
+      <div class="fr">
+        <div class="fg"><label>Teléfono</label><input type="tel" id="f_tel_f" placeholder="+34 600 000 000"></div>
+        <div class="fg"><label>Fecha *</label><input type="date" id="f_fecha" required></div>
+      </div>
+      <div class="fr">
+        <div class="fg"><label>Tipo de evento *</label>
+          <select id="f_tipo" required>
+            <option value="">Selecciona...</option>
+            <option>Boda</option><option>Cumpleaños / Fiesta privada</option>
+            <option>Evento corporativo</option><option>Club / Sala</option>
+            <option>Comunión / Bautizo</option><option>Otro</option>
+          </select>
+        </div>
+        <div class="fg"><label>Equipamiento</label>
+          <select id="f_equipo">
+            <option value="Con equipo completo">Con equipo completo</option>
+            <option value="Solo DJ sin equipo">Solo DJ (sin equipo)</option>
+            <option value="Por confirmar">Por confirmar</option>
+          </select>
+        </div>
+      </div>
+      <div class="fg"><label>Localización *</label><input type="text" id="f_lugar" required placeholder="Ciudad, sala o espacio"></div>
+      <div class="fg"><label>Mensaje</label><textarea id="f_msg" placeholder="Horario aproximado, estilo musical, detalles..."></textarea></div>
+      <button type="submit" class="btn-submit" id="btnSubmit">Enviar consulta</button>
+      <div class="form-msg" id="formMsg"></div>
+    </form>
   </div>
 </div>
 
@@ -548,14 +531,10 @@ form{display:flex;flex-direction:column;gap:14px;}
   <div class="dj-modal-box">
     <button class="dj-modal-close" onclick="document.getElementById('djAvisoModal').style.display='none'">✕</button>
     <h2>Aviso Legal</h2>
-    <h3>Titular</h3>
-    <p><strong>Titular:</strong> Alberto Martí<br><strong>Domicilio:</strong> Xàtiva, Valencia<br><strong>Email:</strong> albertoylucia2011@gmail.com</p>
-    <h3>Objeto</h3>
-    <p>Sitio web informativo sobre servicios de DJ de Alberto Martí con formulario de contacto y solicitud de presupuesto.</p>
-    <h3>Propiedad intelectual</h3>
-    <p>Los contenidos del sitio son propiedad de Alberto Martí. Prohibida su reproducción sin autorización.</p>
-    <h3>Legislación aplicable</h3>
-    <p>Legislación española. Juzgados y Tribunales de Valencia.</p>
+    <h3>Titular</h3><p><strong>Titular:</strong> Alberto Martí · <strong>Domicilio:</strong> Xàtiva, Valencia · <strong>Email:</strong> albertoylucia2011@gmail.com</p>
+    <h3>Objeto</h3><p>Sitio web informativo sobre servicios de DJ con formulario de contacto.</p>
+    <h3>Propiedad intelectual</h3><p>Contenidos propiedad de Alberto Martí. Prohibida su reproducción sin autorización.</p>
+    <h3>Legislación</h3><p>Legislación española. Juzgados y Tribunales de Valencia.</p>
   </div>
 </div>
 <div class="dj-modal-overlay" id="djPrivModal" onclick="if(event.target===this)this.style.display='none'">
@@ -563,39 +542,27 @@ form{display:flex;flex-direction:column;gap:14px;}
     <button class="dj-modal-close" onclick="document.getElementById('djPrivModal').style.display='none'">✕</button>
     <h2>Política de Privacidad</h2>
     <p>En cumplimiento del RGPD y la LOPD, Alberto Martí informa sobre el tratamiento de datos.</p>
-    <h3>Datos recogidos</h3>
-    <p>Nombre, email, teléfono y mensaje (formulario de contacto). Nombre, evento y comentario (reseñas).</p>
-    <h3>Finalidad</h3>
-    <p>Responder solicitudes de contratación y gestionar el calendario. Las reseñas aprobadas se publican con nombre y tipo de evento.</p>
-    <h3>Cesión a terceros</h3>
-    <p>Los datos no se ceden a terceros salvo obligación legal.</p>
-    <h3>Derechos</h3>
-    <p>Acceso, rectificación y supresión en: <strong>albertoylucia2011@gmail.com</strong></p>
+    <h3>Datos recogidos</h3><p>Nombre, teléfono y mensaje (formulario). Nombre, evento y comentario (reseñas).</p>
+    <h3>Finalidad</h3><p>Responder solicitudes y gestionar el calendario. Las reseñas aprobadas se publican con nombre y tipo de evento.</p>
+    <h3>Cesión</h3><p>Los datos no se ceden a terceros salvo obligación legal.</p>
+    <h3>Derechos</h3><p>Acceso, rectificación y supresión en: albertoylucia2011@gmail.com</p>
   </div>
 </div>
 <div class="dj-modal-overlay" id="djCookiesModal" onclick="if(event.target===this)this.style.display='none'">
   <div class="dj-modal-box">
     <button class="dj-modal-close" onclick="document.getElementById('djCookiesModal').style.display='none'">✕</button>
     <h2>Política de Cookies</h2>
-    <p>Este sitio usa cookies técnicas para mejorar la navegación. No se usan cookies de seguimiento ni publicidad.</p>
-    <h3>Desactivación</h3>
-    <p>Puedes configurar tu navegador para rechazarlas. Puede afectar al funcionamiento del sitio.</p>
+    <p>Este sitio usa únicamente cookies técnicas. No se usan cookies de seguimiento ni publicidad.</p>
   </div>
 </div>
 <div class="dj-modal-overlay" id="djTycModal" onclick="if(event.target===this)this.style.display='none'">
   <div class="dj-modal-box">
     <button class="dj-modal-close" onclick="document.getElementById('djTycModal').style.display='none'">✕</button>
     <h2>Términos y Condiciones</h2>
-    <h3>1. Servicio</h3>
-    <p>DJ Alberto Martí ofrece servicios de DJ para bodas, eventos privados y clubs en Valencia y alrededores.</p>
-    <h3>2. Confirmación de reserva</h3>
-    <p>El contacto por WhatsApp no implica reserva. La fecha queda confirmada mediante señal por Bizum o PayPal.</p>
-    <h3>3. Cancelaciones</h3>
-    <p>Cancelaciones con menos de 30 días de antelación pueden conllevar pérdida de la señal. Condiciones definitivas acordadas individualmente.</p>
-    <h3>4. Reseñas</h3>
-    <p>Las reseñas están sujetas a moderación previa. Se reserva el derecho a no publicar contenidos ofensivos o falsos.</p>
-    <h3>5. Legislación</h3>
-    <p>Legislación española. Juzgados de Valencia.</p>
+    <h3>1. Servicio</h3><p>DJ Alberto Martí ofrece servicios de DJ en Valencia y alrededores.</p>
+    <h3>2. Reserva</h3><p>El contacto por WhatsApp no implica reserva. La fecha queda confirmada tras el acuerdo entre las partes.</p>
+    <h3>3. Reseñas</h3><p>Las reseñas están sujetas a moderación previa.</p>
+    <h3>4. Legislación</h3><p>Legislación española. Juzgados de Valencia.</p>
   </div>
 </div>
 
@@ -605,42 +572,55 @@ form{display:flex;flex-direction:column;gap:14px;}
   <a href="#bio-wrap" onclick="setNav(this)">Bio</a>
   <a href="#svc-wrap" onclick="setNav(this)">Servicios</a>
   <a href="#calendario" onclick="setNav(this)">Disponibilidad</a>
-  <a href="#contacto" onclick="setNav(this)">Contactar</a>
+  <a href="#resenas" onclick="setNav(this)">Opiniones</a>
 </nav>
+
+<!-- WHATSAPP FLOTANTE -->
+<a href="https://wa.me/34658023238?text=Hola%20Alberto,%20estoy%20interesado%20en%20contratarte" target="_blank" id="waFloat">💬</a>
+<style>
+#waFloat{position:fixed;bottom:90px;right:14px;width:58px;height:58px;background:#25D366;color:#fff;font-size:26px;display:flex;align-items:center;justify-content:center;border-radius:50%;text-decoration:none;box-shadow:0 8px 20px rgba(0,0,0,.3);z-index:9999;}
+@media(max-width:768px){#waFloat{bottom:80px;width:54px;height:54px;font-size:24px;}}
+html,body{overflow-x:hidden;}
+</style>
 
 <script>
 // ============================================================
-//  CONFIGURACIÓN
+//  CONFIG — edita solo estas variables
 // ============================================================
 var GAS_URL    = 'https://script.google.com/macros/s/AKfycbxlILj3qI2sLfXFOqLyGeSJ-adWvMbMwdZoOjiUpMaPpr7eIxZmqel1NthfDet1uHIJ6w/exec';
 var HERO_PHOTO = 'https://i.imgur.com/xiUZX5l.png';
 var BIO_PHOTO  = 'https://i.imgur.com/wvRoFS1.png';
 var WA_NUMBER  = '34658023238';
 
+// ============================================================
+//  ESTADO GLOBAL
+// ============================================================
 var G = {
-  isAdmin:    false,
-  adminToken: null,
-  slots:      [],
+  isAdmin:      false,
+  adminToken:   null,
+  slots:        [],
   selectedDate: null,
-  curY: null,
-  curM: null
+  curY:         null,
+  curM:         null
 };
-
 var today = new Date();
 G.curY = today.getFullYear();
 G.curM = today.getMonth();
+
+var MONTHS   = ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
+var MONTHSES = ['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
 
 // ============================================================
 //  FOTOS
 // ============================================================
 if (HERO_PHOTO) {
   var hb = document.getElementById('heroBg');
-  hb.style.backgroundImage = "linear-gradient(to right,rgba(0,0,0,.95) 0%,rgba(0,0,0,.7) 30%,rgba(0,0,0,.1) 60%,rgba(0,0,0,.3) 100%),url('"+HERO_PHOTO+"')";
-  hb.style.backgroundSize = "cover";
-  hb.style.backgroundPosition = "center 20%";
+  hb.style.backgroundImage = "linear-gradient(to right,rgba(0,0,0,.95) 0%,rgba(0,0,0,.7) 30%,rgba(0,0,0,.1) 60%,rgba(0,0,0,.3) 100%),url('" + HERO_PHOTO + "')";
+  hb.style.backgroundSize = 'cover';
+  hb.style.backgroundPosition = 'center 20%';
 }
 if (BIO_PHOTO) {
-  document.getElementById('bioWrap').innerHTML = '<img src="'+BIO_PHOTO+'" alt="DJ Alberto Marti">';
+  document.getElementById('bioWrap').innerHTML = '<img src="' + BIO_PHOTO + '" alt="DJ Alberto Marti">';
 }
 
 // ============================================================
@@ -652,11 +632,28 @@ document.getElementById('hero').addEventListener('click', function(){
   if (_cc >= 5) { _cc = 0; showAdmin(); }
 });
 
+function showAdmin() {
+  var p = prompt('Contraseña admin:');
+  if (!p) return;
+  gasCall('login', { pass: p }).then(function(r) {
+    if (r.ok) {
+      G.isAdmin    = true;
+      G.adminToken = r.token;
+      var hint = document.getElementById('adminHint');
+      hint.style.display = 'inline';
+      hint.textContent   = '· Admin activo';
+      toast('Modo admin activado ✓');
+      loadSlots();
+    } else {
+      toast('Contraseña incorrecta');
+    }
+  }).catch(function(){ toast('Error de conexión'); });
+}
+
 // ============================================================
-//  COMUNICACIÓN GAS
+//  GAS
 // ============================================================
 function gasCall(action, params) {
-  if (!GAS_URL) return Promise.resolve({ ok:true, slots:[], solicitudes:[], resenas:[] });
   var payload = Object.assign({ action: action }, params || {});
   if (G.adminToken) payload.adminToken = G.adminToken;
   return fetch(GAS_URL, {
@@ -667,33 +664,10 @@ function gasCall(action, params) {
 }
 
 // ============================================================
-//  LOGIN ADMIN
-// ============================================================
-function showAdmin() {
-  var p = prompt('Contraseña admin:');
-  if (!p) return;
-  gasCall('login', { pass: p }).then(function(r) {
-    if (r.ok) {
-      G.isAdmin    = true;
-      G.adminToken = r.token;
-      toast('Modo admin activado ✓');
-      var hint = document.getElementById('adminHint');
-      hint.style.display = 'inline';
-      hint.textContent   = '· Admin activo';
-    } else {
-      toast('Contraseña incorrecta');
-    }
-  }).catch(function(){ toast('Error de conexión'); });
-}
-
-// ============================================================
 //  CALENDARIO
 // ============================================================
-var MONTHS   = ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre','Diciembre'];
-var MONTHSES = ['enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre'];
-
 function loadSlots() {
-  gasCall('getDisponibilidad', { mes: G.curM+1, anio: G.curY }).then(function(r){
+  gasCall('getDisponibilidad', { mes: G.curM + 1, anio: G.curY }).then(function(r){
     if (r.ok) G.slots = r.slots || [];
     renderCal();
   }).catch(function(){ renderCal(); });
@@ -702,7 +676,7 @@ function loadSlots() {
 function changeMonth(d) {
   G.curM += d;
   if (G.curM > 11) { G.curM = 0; G.curY++; }
-  if (G.curM <  0) { G.curM = 11; G.curY--; }
+  if (G.curM < 0)  { G.curM = 11; G.curY--; }
   G.selectedDate = null;
   document.getElementById('calSidebar').className = 'cal-sidebar';
   loadSlots();
@@ -715,6 +689,45 @@ function goToday() {
   loadSlots();
 }
 
+function renderCal() {
+  document.getElementById('calMonthLabel').textContent = MONTHS[G.curM] + ' ' + G.curY;
+  var grid = document.getElementById('calGrid');
+  var html = '';
+  var fd   = new Date(G.curY, G.curM, 1).getDay();
+  var fm   = fd === 0 ? 6 : fd - 1;
+  var dim  = new Date(G.curY, G.curM + 1, 0).getDate();
+
+  for (var i = 0; i < fm; i++) html += '<div class="cal-cell cal-empty"></div>';
+
+  for (var d = 1; d <= dim; d++) {
+    var ds      = G.curY + '-' + String(G.curM+1).padStart(2,'0') + '-' + String(d).padStart(2,'0');
+    var cd      = new Date(G.curY, G.curM, d);
+    var past    = cd < new Date(today.getFullYear(), today.getMonth(), today.getDate());
+    var isT     = d === today.getDate() && G.curM === today.getMonth() && G.curY === today.getFullYear();
+    var isW     = cd.getDay() === 0 || cd.getDay() === 6;
+    var isSel   = ds === G.selectedDate;
+    var daySlots  = G.slots.filter(function(s){ return s.fecha === ds; });
+    var isBlocked = daySlots.some(function(s){ return s.tipo === 'bloqueado'; });
+
+    var cls = 'cal-cell'
+      + (past      ? ' cal-past'    : '')
+      + (isT       ? ' cal-today'   : '')
+      + (isW       ? ' cal-weekend' : '')
+      + (isSel     ? ' cal-selected': '')
+      + (isBlocked && !G.isAdmin ? ' cal-blocked' : '');
+
+    html += '<div class="' + cls + '" data-date="' + ds + '" onclick="handleDayClick(this)">';
+    html += '<div class="cal-dn">' + d + '</div>';
+    if (G.isAdmin) {
+      daySlots.forEach(function(s){
+        html += '<div class="cal-occ-dot">' + s.horaInicio + '-' + s.horaFin + '</div>';
+      });
+    }
+    html += '</div>';
+  }
+  grid.innerHTML = html;
+}
+
 function handleDayClick(el) {
   if (el.classList.contains('cal-past') || el.classList.contains('cal-empty')) return;
   if (el.classList.contains('cal-blocked') && !G.isAdmin) {
@@ -725,58 +738,17 @@ function handleDayClick(el) {
   if (ds) selectDay(ds);
 }
 
-function renderCal() {
-  document.getElementById('calMonthLabel').textContent = MONTHS[G.curM] + ' ' + G.curY;
-  var grid = document.getElementById('calGrid');
-  var html = '';
-  var fd   = new Date(G.curY, G.curM, 1).getDay();
-  var fm   = fd === 0 ? 6 : fd - 1;
-  var dim  = new Date(G.curY, G.curM+1, 0).getDate();
-
-  for (var i = 0; i < fm; i++) html += '<div class="cal-cell cal-empty"></div>';
-
-  for (var d = 1; d <= dim; d++) {
-    var ds   = G.curY + '-' + String(G.curM+1).padStart(2,'0') + '-' + String(d).padStart(2,'0');
-    var cd   = new Date(G.curY, G.curM, d);
-    var past = cd < new Date(today.getFullYear(), today.getMonth(), today.getDate());
-    var isT  = d === today.getDate() && G.curM === today.getMonth() && G.curY === today.getFullYear();
-    var isW  = cd.getDay() === 0 || cd.getDay() === 6;
-    var isSel= ds === G.selectedDate;
-    var daySlots    = G.slots.filter(function(s){ return s.fecha === ds; });
-    var isBlocked   = G.slots.some(function(s){ return s.fecha === ds && s.tipo === 'bloqueado'; });
-
-    var cls = 'cal-cell' +
-      (past      ? ' cal-past'    : '') +
-      (isT       ? ' cal-today'   : '') +
-      (isW       ? ' cal-weekend' : '') +
-      (isSel     ? ' cal-selected': '') +
-      (isBlocked && !G.isAdmin ? ' cal-blocked' : '');
-
-    html += '<div class="'+cls+'" data-date="'+ds+'" onclick="handleDayClick(this)">';
-    html += '<div class="cal-dn">'+d+'</div>';
-    // Admin ve las franjas bloqueadas en el grid
-    if (G.isAdmin && daySlots.length > 0) {
-      daySlots.forEach(function(s){
-        html += '<div class="cal-occ-dot">'+s.horaInicio+'-'+s.horaFin+'</div>';
-      });
-    }
-    html += '</div>';
-  }
-  grid.innerHTML = html;
-}
-
 function genH() {
   var h = [];
-  for (var i = 10; i < 24; i++) h.push(String(i).padStart(2,'0')+':00');
+  for (var i = 10; i < 24; i++) h.push(String(i).padStart(2,'0') + ':00');
   h.push('00:00');
-  for (var i = 1; i <= 6; i++) h.push(String(i).padStart(2,'0')+':00');
+  for (var i = 1; i <= 6; i++) h.push(String(i).padStart(2,'0') + ':00');
   return h;
 }
 
 function h2n(h) {
   if (!h) return 0;
-  var parts = h.toString().split(':');
-  var n = parseInt(parts[0]);
+  var n = parseInt(h.toString().split(':')[0]);
   if (n === 0) return 24;
   return n < 7 ? n + 24 : n;
 }
@@ -785,59 +757,62 @@ function selectDay(ds) {
   G.selectedDate = ds;
   renderCal();
   var p = ds.split('-');
-  document.getElementById('sidebarDate').textContent = parseInt(p[2]) + ' de ' + MONTHSES[parseInt(p[1])-1] + ' de ' + p[0];
+  document.getElementById('sidebarDate').textContent =
+    parseInt(p[2]) + ' de ' + MONTHSES[parseInt(p[1])-1] + ' de ' + p[0];
+
   var daySlots = G.slots.filter(function(s){ return s.fecha === ds; });
 
   if (G.isAdmin) {
-    // --- VISTA ADMIN ---
     document.getElementById('adminView').style.display = 'block';
     document.getElementById('clientView').style.display = 'none';
+
     var hours = genH();
-    var ss = document.getElementById('asl_start');
-    var es = document.getElementById('asl_end');
-    ss.innerHTML = hours.map(function(h){ return '<option>'+h+'</option>'; }).join('');
-    es.innerHTML = hours.map(function(h){ return '<option>'+h+'</option>'; }).join('');
-    es.selectedIndex = 2;
+    var aSt = document.getElementById('asl_start');
+    var aEn = document.getElementById('asl_end');
+    aSt.innerHTML = hours.map(function(h){ return '<option>' + h + '</option>'; }).join('');
+    aEn.innerHTML = hours.map(function(h){ return '<option>' + h + '</option>'; }).join('');
+    aEn.selectedIndex = 2;
+
     var html = '';
     if (daySlots.length === 0) {
-      html = '<p style="color:var(--muted);font-size:.78em;padding:8px 0;">Sin franjas bloqueadas en este día.</p>';
+      html = '<p style="color:var(--muted);font-size:.78em;padding:8px 0;">Sin franjas bloqueadas.</p>';
     } else {
       daySlots.forEach(function(s){
         html += '<div class="cal-sidebar-slot">'
-          + '<div><div class="slt-time">'+s.horaInicio+' — '+s.horaFin+'</div>'
-          + (s.notas ? '<div class="slt-note">'+s.notas+'</div>' : '')
+          + '<div>'
+          + '<div class="slt-time">' + s.horaInicio + ' — ' + s.horaFin + '</div>'
+          + (s.notas ? '<div class="slt-note">' + s.notas + '</div>' : '')
           + '</div>'
-          + '<button class="slt-btn-del" data-id="'+s.id+'" onclick="handleDelete(this)">Borrar</button>'
+          + '<button class="slt-btn-del" data-id="' + s.id + '" onclick="deleteSlot(this.getAttribute(\'data-id\'))">Borrar</button>'
           + '</div>';
       });
     }
     document.getElementById('adminSlots').innerHTML = html;
 
   } else {
-    // --- VISTA CLIENTE ---
     document.getElementById('adminView').style.display = 'none';
     document.getElementById('clientView').style.display = 'block';
 
-    var hours = genH();
-    var cs = document.getElementById('cli_start');
-    // Solo slots de tipo bloqueado bloquean horas al cliente
-    var blockedSlots = daySlots.filter(function(s){ return s.tipo === 'bloqueado'; });
+    var hours     = genH();
+    var blocked   = daySlots.filter(function(s){ return s.tipo === 'bloqueado'; });
+    var cs        = document.getElementById('cli_start');
 
-    cs.innerHTML = '<option value="">Selecciona hora inicio...</option>';
+    cs.innerHTML  = '<option value="">Selecciona hora inicio...</option>';
     hours.forEach(function(h){
-      var blocked = isHourBlocked(h, blockedSlots);
-      cs.innerHTML += '<option'+(blocked?' disabled style="color:#555"':'')+' value="'+h+'">'+h+(blocked?' (no disponible)':'')+'</option>';
+      var bloq = isHourBlocked(h, blocked);
+      cs.innerHTML += '<option' + (bloq ? ' disabled style="color:#555"' : '') + ' value="' + h + '">'
+        + h + (bloq ? ' (no disponible)' : '') + '</option>';
     });
+    cs._blocked = blocked;
 
     document.getElementById('cli_end').innerHTML = '<option value="">Primero elige inicio</option>';
-    document.getElementById('waSelectedTime').className = 'wa-selected-time';
-    document.getElementById('btnWhatsapp').className = 'btn-whatsapp-book';
-    // Guardamos los slots bloqueados en el select para uso posterior
-    cs._blocked = blockedSlots;
+    document.getElementById('cliFields').className    = 'cli-fields';
+    document.getElementById('waResumen').className    = 'wa-resumen';
+    document.getElementById('btnWa').className        = 'btn-wa';
   }
 
   document.getElementById('calSidebar').className = 'cal-sidebar visible';
-  document.getElementById('calSidebar').scrollIntoView({ behavior:'smooth', block:'nearest' });
+  document.getElementById('calSidebar').scrollIntoView({ behavior: 'smooth', block: 'nearest' });
 }
 
 function isHourBlocked(h, occ) {
@@ -850,144 +825,108 @@ function isHourBlocked(h, occ) {
 }
 
 function onStartChange() {
-  var sv = document.getElementById('cli_start').value;
+  var sv  = document.getElementById('cli_start').value;
   if (!sv) return;
-  var sn = h2n(sv);
-  var hours = genH();
-  var blockedSlots = document.getElementById('cli_start')._blocked || [];
-  var es = document.getElementById('cli_end');
+  var sn  = h2n(sv);
+  var occ = document.getElementById('cli_start')._blocked || [];
+  var es  = document.getElementById('cli_end');
 
   es.innerHTML = '<option value="">Selecciona hora fin...</option>';
-  hours.forEach(function(h){
+  genH().forEach(function(h){
     var diff = h2n(h) - sn;
     if (diff > 0 && diff <= 10) {
-      // Comprobar si la franja inicio→h tiene alguna hora bloqueada
-      var conflict = blockedSlots.some(function(o){
+      var conflict = occ.some(function(o){
         var oS = h2n(o.horaInicio), oE = h2n(o.horaFin);
         if (oE <= oS) oE += 24;
         return sn < oE && h2n(h) > oS;
       });
-      es.innerHTML += '<option'+(conflict?' disabled style="color:#555"':'')+' value="'+h+'">'+h+(conflict?' (no disponible)':'')+'</option>';
+      es.innerHTML += '<option' + (conflict ? ' disabled style="color:#555"' : '') + ' value="' + h + '">'
+        + h + (conflict ? ' (no disponible)' : '') + '</option>';
     }
   });
 
-  document.getElementById('waSelectedTime').className = 'wa-selected-time';
-  document.getElementById('btnWhatsapp').className = 'btn-whatsapp-book';
+  document.getElementById('cliFields').className = 'cli-fields';
+  document.getElementById('waResumen').className = 'wa-resumen';
+  document.getElementById('btnWa').className     = 'btn-wa';
 }
 
 function onEndChange() {
   var sv = document.getElementById('cli_start').value;
   var ev = document.getElementById('cli_end').value;
-
-  if (!sv || !ev) {
-    document.getElementById('waSelectedTime').className = 'wa-selected-time';
-    document.getElementById('btnWhatsapp').className = 'btn-whatsapp-book';
-    return;
-  }
-
-  // Mostrar resumen y botón WhatsApp
+  if (!sv || !ev) return;
+  document.getElementById('cliFields').className = 'cli-fields show';
   var p = G.selectedDate.split('-');
   var dateStr = parseInt(p[2]) + ' de ' + MONTHSES[parseInt(p[1])-1] + ' de ' + p[0];
-  document.getElementById('waSelectedTime').textContent = '✓ ' + dateStr + '  ·  ' + sv + ' — ' + ev;
-  document.getElementById('waSelectedTime').className = 'wa-selected-time show';
-  document.getElementById('btnWhatsapp').className = 'btn-whatsapp-book show';
+  document.getElementById('waResumen').textContent = '📅 ' + dateStr + '  ·  ' + sv + ' — ' + ev;
+  document.getElementById('waResumen').className   = 'wa-resumen show';
+  document.getElementById('btnWa').className       = 'btn-wa show';
 }
 
 // ============================================================
-//  ABRIR WHATSAPP — el clic final del cliente
+//  ABRIR WHATSAPP
 // ============================================================
 function openWhatsApp() {
-  var sv = document.getElementById('cli_start').value;
-  var ev = document.getElementById('cli_end').value;
-  if (!sv || !ev || !G.selectedDate) return;
+  var sv        = document.getElementById('cli_start').value;
+  var ev        = document.getElementById('cli_end').value;
+  var nombre    = document.getElementById('cli_nombre').value.trim();
+  var tel       = document.getElementById('cli_tel').value.trim();
+  var ubicacion = document.getElementById('cli_ubicacion').value.trim();
+  var equipo    = document.getElementById('cli_equipo').value;
 
-  var p = G.selectedDate.split('-');
+  if (!sv || !ev || !G.selectedDate) return;
+  if (!nombre || !ubicacion) { toast('Rellena tu nombre y la ubicación del evento.'); return; }
+
+  var p       = G.selectedDate.split('-');
   var dateStr = parseInt(p[2]) + ' de ' + MONTHSES[parseInt(p[1])-1] + ' de ' + p[0];
 
-  var msg = 'Hola Alberto! Me interesa reservarte para el ' + dateStr
-          + ', de ' + sv + ' a ' + ev + '. ¿Está disponible y cuál sería el precio?';
+  var msg = 'Hola Alberto, me llamo ' + nombre
+    + ' y me interesa contratarte para el ' + dateStr
+    + ', de ' + sv + ' a ' + ev + '.'
+    + '\n📍 Ubicación: ' + ubicacion
+    + '\n🎛️ Equipamiento: ' + equipo
+    + (tel ? '\n📱 Mi WhatsApp: ' + tel : '')
+    + '\n¿Está disponible y cuál sería el precio?';
 
-  var url = 'https://wa.me/' + WA_NUMBER + '?text=' + encodeURIComponent(msg);
-  window.open(url, '_blank');
+  // Notificar al GAS para que llegue Telegram al admin
+  gasCall('notificarContacto', {
+    data: { nombre: nombre, telefono: tel, fecha: G.selectedDate,
+            horaInicio: sv, horaFin: ev, ubicacion: ubicacion, equipo: equipo }
+  });
+
+  window.open('https://wa.me/' + WA_NUMBER + '?text=' + encodeURIComponent(msg), '_blank');
 }
 
 // ============================================================
-//  ADMIN: añadir / borrar franjas bloqueadas
+//  ADMIN — bloquear / borrar franjas
 // ============================================================
-function handleDelete(el) {
-  var id = el.getAttribute('data-id');
-  if (id) deleteSlot(id);
-}
-
 function addSlot() {
   if (!G.selectedDate) return;
   var data = {
     fecha:      G.selectedDate,
     horaInicio: document.getElementById('asl_start').value,
     horaFin:    document.getElementById('asl_end').value,
-    tipo:       'bloqueado',
-    notas:      document.getElementById('asl_notas').value
+    notas:      document.getElementById('asl_notas').value.trim()
   };
   gasCall('addDisponibilidad', { data: data }).then(function(r){
     if (r.ok) {
-      G.slots.push({ id:r.id, fecha:data.fecha, horaInicio:data.horaInicio, horaFin:data.horaFin, tipo:'bloqueado', notas:data.notas });
-      renderCal(); selectDay(G.selectedDate); toast('Franja bloqueada guardada');
+      G.slots.push({ id: r.id, fecha: data.fecha, horaInicio: data.horaInicio,
+                     horaFin: data.horaFin, tipo: 'bloqueado', notas: data.notas });
+      renderCal(); selectDay(G.selectedDate);
+      toast('Franja bloqueada ✓');
       document.getElementById('asl_notas').value = '';
-    } else {
-      toast('Error: ' + (r.error || 'No autorizado'));
-    }
+    } else { toast('Error: ' + (r.error || 'No autorizado')); }
   }).catch(function(){ toast('Error de conexión'); });
 }
 
 function deleteSlot(id) {
-  if (!confirm('¿Borrar esta franja bloqueada?')) return;
+  if (!confirm('¿Borrar esta franja?')) return;
   gasCall('deleteDisponibilidad', { id: id }).then(function(r){
     if (r.ok) {
       G.slots = G.slots.filter(function(s){ return s.id !== id; });
-      renderCal(); selectDay(G.selectedDate); toast('Franja eliminada');
-    } else {
-      toast('Error: ' + (r.error || 'No autorizado'));
-    }
-  });
-}
-
-// ============================================================
-//  FORMULARIO DE CONTACTO (sección contacto — opcional)
-// ============================================================
-function enviarSolicitud(e) {
-  e.preventDefault();
-  var btn = document.getElementById('btnSubmit');
-  var msg = document.getElementById('formMsg');
-  btn.disabled = true; btn.textContent = 'Enviando...';
-  var data = {
-    nombre:     document.getElementById('f_nombre').value.trim(),
-    email:      document.getElementById('f_email').value.trim(),
-    telefono:   document.getElementById('f_tel').value.trim(),
-    fecha:      document.getElementById('f_fecha').value,
-    horaInicio: '',
-    horaFin:    '',
-    tipoEvento: document.getElementById('f_tipo').value,
-    lugar:      document.getElementById('f_lugar').value.trim(),
-    mensaje:    document.getElementById('f_msg').value.trim()
-  };
-  gasCall('enviarSolicitud', { data: data }).then(function(r){
-    btn.disabled = false; btn.textContent = 'Enviar consulta';
-    msg.style.display = 'block';
-    if (r.ok) {
-      msg.className = 'form-msg ok';
-      msg.textContent = 'Consulta enviada. Te respondo en menos de 24 horas.';
-      toast('Consulta enviada!');
-      e.target.reset();
-    } else {
-      msg.className = 'form-msg err';
-      msg.textContent = 'Error: ' + (r.error || 'Inténtalo de nuevo');
-    }
-  }).catch(function(){
-    btn.disabled = false; btn.textContent = 'Enviar consulta';
-    msg.style.display = 'block';
-    msg.className = 'form-msg err';
-    msg.textContent = 'Error de conexión. Escríbeme directamente por WhatsApp.';
-  });
+      renderCal(); selectDay(G.selectedDate);
+      toast('Franja eliminada');
+    } else { toast('Error: ' + (r.error || 'No autorizado')); }
+  }).catch(function(){ toast('Error de conexión'); });
 }
 
 // ============================================================
@@ -1000,10 +939,19 @@ function loadResenas() {
       grid.innerHTML = '<div class="resena-empty">Sé el primero en opinar.</div>'; return;
     }
     grid.innerHTML = r.resenas.map(function(rv){
-      var s = ''; for (var i = 0; i < 5; i++) s += i < rv.estrellas ? '&#9733;' : '&#9734;';
-      return '<div class="resena-card"><div class="resena-stars">'+s+'</div><div class="resena-texto">&ldquo;'+rv.texto+'&rdquo;</div><div class="resena-autor"><div class="resena-avatar">'+rv.nombre.charAt(0).toUpperCase()+'</div><div><div class="resena-nombre">'+rv.nombre+'</div><div class="resena-evento">'+rv.evento+'</div></div></div></div>';
+      var s = '';
+      for (var i = 0; i < 5; i++) s += i < rv.estrellas ? '&#9733;' : '&#9734;';
+      return '<div class="resena-card">'
+        + '<div class="resena-stars">' + s + '</div>'
+        + '<div class="resena-texto">&ldquo;' + rv.texto + '&rdquo;</div>'
+        + '<div class="resena-autor">'
+        + '<div class="resena-avatar">' + rv.nombre.charAt(0).toUpperCase() + '</div>'
+        + '<div><div class="resena-nombre">' + rv.nombre + '</div>'
+        + '<div class="resena-evento">' + rv.evento + '</div></div></div></div>';
     }).join('');
-  }).catch(function(){ document.getElementById('resenasGrid').innerHTML = '<div class="resena-empty">No hay opiniones aún.</div>'; });
+  }).catch(function(){
+    document.getElementById('resenasGrid').innerHTML = '<div class="resena-empty">No hay opiniones aún.</div>';
+  });
 }
 
 function enviarResena() {
@@ -1018,20 +966,18 @@ function enviarResena() {
     msg.textContent = 'Por favor rellena todos los campos.'; return;
   }
   btn.disabled = true; btn.textContent = 'Enviando...';
-  gasCall('addResena', { nombre:nombre, evento:evento, texto:texto, estrellas:parseInt(se.value) })
+  gasCall('addResena', { nombre: nombre, evento: evento, texto: texto, estrellas: parseInt(se.value) })
     .then(function(r){
       btn.disabled = false; btn.textContent = 'Enviar opinión';
       msg.style.display = 'block';
       if (r.ok) {
         msg.className = 'form-msg ok';
-        msg.textContent = '¡Gracias! Pendiente de aprobación.';
+        msg.textContent = '¡Gracias! Tu opinión está pendiente de aprobación.';
         document.getElementById('r_nombre').value = '';
         document.getElementById('r_evento').value = '';
         document.getElementById('r_texto').value  = '';
         document.querySelectorAll('input[name="stars"]').forEach(function(i){ i.checked = false; });
-      } else {
-        msg.className = 'form-msg err'; msg.textContent = 'Error al enviar.';
-      }
+      } else { msg.className = 'form-msg err'; msg.textContent = 'Error al enviar.'; }
     }).catch(function(){
       btn.disabled = false; btn.textContent = 'Enviar opinión';
       msg.style.display = 'block'; msg.className = 'form-msg err'; msg.textContent = 'Error de conexión.';
@@ -1044,21 +990,51 @@ function loadResenasPendientes() {
   gasCall('getResenas', { soloAprobadas: false }).then(function(r){
     var pend = (r.resenas || []).filter(function(rv){ return rv.estado === 'Pendiente'; });
     var wrap = document.getElementById('resenasPendientes');
-    if (!pend.length) { wrap.innerHTML = '<p style="color:var(--muted);font-size:.82em;">Sin reseñas pendientes.</p>'; return; }
-    function st(n){ var s=''; for(var i=0;i<5;i++) s+=i<n?'★':'☆'; return s; }
+    if (!pend.length) {
+      wrap.innerHTML = '<p style="color:var(--muted);font-size:.82em;">Sin reseñas pendientes.</p>'; return;
+    }
+    function st(n){ var s=''; for(var i=0;i<5;i++) s += i<n ? '★' : '☆'; return s; }
     wrap.innerHTML = pend.map(function(rv){
-      return '<div class="resena-admin-card"><div class="resena-admin-info"><div style="font-weight:700;color:var(--white);font-size:.85em;">'+rv.nombre+' — '+rv.evento+' <span style="color:var(--gold)">'+st(rv.estrellas)+'</span></div><div style="color:var(--muted);font-size:.8em;margin-top:6px;font-style:italic;">&ldquo;'+rv.texto+'&rdquo;</div></div><div class="resena-admin-btns"><button class="btn-aprobar" data-id="'+rv.id+'" onclick="handleAprobar(this)">Publicar</button><button class="btn-rechazar" data-id="'+rv.id+'" onclick="handleRechazar(this)">Eliminar</button></div></div>';
+      return '<div class="resena-admin-card">'
+        + '<div class="resena-admin-info">'
+        + '<div style="font-weight:700;font-size:.85em;">' + rv.nombre + ' — ' + rv.evento
+        + ' <span style="color:var(--gold)">' + st(rv.estrellas) + '</span></div>'
+        + '<div style="color:var(--muted);font-size:.8em;margin-top:6px;font-style:italic;">&ldquo;' + rv.texto + '&rdquo;</div>'
+        + '</div>'
+        + '<div class="resena-admin-btns">'
+        + '<button class="btn-aprobar"  data-id="' + rv.id + '" onclick="gestionarResena(this,\'Aprobada\')">Publicar</button>'
+        + '<button class="btn-rechazar" data-id="' + rv.id + '" onclick="gestionarResena(this,\'Rechazada\')">Eliminar</button>'
+        + '</div></div>';
     }).join('');
   });
 }
 
-function handleAprobar(el)  { gestionarResena(el, 'Aprobada');  }
-function handleRechazar(el) { gestionarResena(el, 'Rechazada'); }
 function gestionarResena(el, estado) {
   var id = el.getAttribute('data-id');
-  gasCall('updateResena', { id:id, estado:estado }).then(function(r){
-    if (r.ok) { toast(estado === 'Aprobada' ? 'Reseña publicada' : 'Reseña eliminada'); loadResenas(); loadResenasPendientes(); }
+  gasCall('updateResena', { id: id, estado: estado }).then(function(r){
+    if (r.ok) {
+      toast(estado === 'Aprobada' ? 'Reseña publicada' : 'Reseña eliminada');
+      loadResenas(); loadResenasPendientes();
+    }
   });
+}
+
+// ============================================================
+//  FORMULARIO DE CONTACTO (oculto)
+//  Para reactivar: quitar display:none del div#contacto
+//  y añadir <a href="#contacto" onclick="setNav(this)">Contactar</a> en el nav
+// ============================================================
+function enviarFormContacto(e) {
+  e.preventDefault();
+  var btn = document.getElementById('btnSubmit');
+  var msg = document.getElementById('formMsg');
+  btn.disabled = true; btn.textContent = 'Enviando...';
+  // Si reactivas el formulario, implementa aquí la llamada GAS correspondiente
+  setTimeout(function(){
+    btn.disabled = false; btn.textContent = 'Enviar consulta';
+    msg.style.display = 'block'; msg.className = 'form-msg err';
+    msg.textContent = 'Formulario desactivado. Usa el calendario o WhatsApp.';
+  }, 500);
 }
 
 // ============================================================
@@ -1070,11 +1046,11 @@ function setNav(el) {
 }
 window.addEventListener('scroll', function(){
   var sy = window.scrollY + 120;
-  ['home','bio-wrap','svc-wrap','calendario','contacto'].forEach(function(id){
+  ['home','bio-wrap','svc-wrap','calendario','resenas'].forEach(function(id){
     var el = document.getElementById(id); if (!el) return;
     if (sy >= el.offsetTop && sy < el.offsetTop + el.offsetHeight) {
       document.querySelectorAll('nav a').forEach(function(a){
-        a.classList.toggle('on', a.getAttribute('href') === '#'+id);
+        a.classList.toggle('on', a.getAttribute('href') === '#' + id);
       });
     }
   });
@@ -1103,32 +1079,5 @@ document.addEventListener('DOMContentLoaded', function(){
   document.querySelectorAll('.reveal').forEach(function(el){ obs.observe(el); });
 });
 </script>
-
-<!-- BOTÓN WHATSAPP FLOTANTE -->
-<a href="https://wa.me/34658023238?text=Hola%20Alberto,%20estoy%20interesado%20en%20contratarte%20para%20un%20evento" target="_blank" id="waFloat">💬</a>
-
-<style>
-#waFloat{
-  position:fixed;
-  bottom:90px;
-  right:14px;
-  width:58px;
-  height:58px;
-  background:#25D366;
-  color:#fff;
-  font-size:26px;
-  display:flex;
-  align-items:center;
-  justify-content:center;
-  border-radius:50%;
-  text-decoration:none;
-  box-shadow:0 8px 20px rgba(0,0,0,.3);
-  z-index:9999;
-}
-@media(max-width:768px){
-  #waFloat{ right:14px; bottom:80px; width:54px; height:54px; font-size:24px; }
-}
-html,body{ overflow-x:hidden; }
-</style>
 </body>
 </html>
