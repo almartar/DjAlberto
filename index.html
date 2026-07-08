@@ -145,6 +145,14 @@ nav a.on::after{content:'';position:absolute;top:0;left:0;right:0;height:2px;bac
 .btn-wa:hover{opacity:.88;transform:translateY(-1px);}
 .btn-wa .wa-icon{font-size:1.3em;}
 
+/* GALERÍA VÍDEO */
+#galeria-wrap{background:#0a0a0a;padding:100px 0;}
+#galeria-wrap .inner{max-width:1200px;margin:0 auto;padding:0 60px;}
+.video-gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,260px));gap:24px;margin-top:44px;}
+.video-card{background:#0d0d0d;border:1px solid var(--line);overflow:hidden;aspect-ratio:9/16;position:relative;}
+.video-card video{width:100%;height:100%;object-fit:cover;display:block;background:#000;}
+.video-card-label{position:absolute;bottom:0;left:0;right:0;padding:14px 16px;background:linear-gradient(to top,rgba(0,0,0,.85),transparent);font-size:.68em;letter-spacing:2px;text-transform:uppercase;color:var(--gold);font-weight:700;pointer-events:none;}
+
 /* RESEÑAS */
 #resenas{background:#060606;padding:100px 0;}
 #resenas .inner{max-width:1200px;margin:0 auto;padding:0 60px;}
@@ -327,6 +335,24 @@ nav a.on::after{content:'';position:absolute;top:0;left:0;right:0;height:2px;bac
           <span style="padding:4px 12px;border:1px solid rgba(201,168,76,.3);font-size:.62em;letter-spacing:2px;text-transform:uppercase;color:var(--gold);">Años 2000</span>
           <span style="padding:4px 12px;border:1px solid rgba(255,255,255,.1);font-size:.62em;letter-spacing:2px;text-transform:uppercase;color:var(--muted);">🎵 Vinilo original</span>
         </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- GALERÍA VÍDEO -->
+<div id="galeria-wrap">
+  <div class="inner">
+    <span class="sec-label reveal">Galería</span>
+    <h2 class="sec-title reveal">En acción</h2>
+    <div class="sec-div"></div>
+    <p class="reveal" style="color:var(--muted);font-size:.82em;line-height:1.7;max-width:600px;">Un vistazo a lo que pasa detrás de los platos. Más clips próximamente.</p>
+    <div class="video-gallery">
+      <div class="video-card reveal">
+        <video controls playsinline preload="metadata">
+          <source src="videos/reel-evento-1.mp4" type="video/mp4">
+        </video>
+        <div class="video-card-label">En directo</div>
       </div>
     </div>
   </div>
@@ -583,6 +609,7 @@ nav a.on::after{content:'';position:absolute;top:0;left:0;right:0;height:2px;bac
   <a href="#home" class="on" onclick="setNav(this)">Home</a>
   <a href="#bio-wrap" onclick="setNav(this)">Bio</a>
   <a href="#svc-wrap" onclick="setNav(this)">Servicios</a>
+  <a href="#galeria-wrap" onclick="setNav(this)">Galería</a>
   <a href="#calendario" onclick="setNav(this)">Disponibilidad</a>
   <a href="#resenas" onclick="setNav(this)">Opiniones</a>
 </nav>
@@ -599,7 +626,6 @@ html,body{overflow-x:hidden;}
 // ============================================================
 //  CONFIG — edita solo estas variables
 // ============================================================
-
 var GAS_URL    = 'https://script.google.com/macros/s/AKfycbx-FN4S1lac3lxwKxCygdfVl42UBLo5ftHiB9P6PZVY1FxXCtLPhnnvDGGDVUMOqi7Fdw/exec';
 var HERO_PHOTO = 'https://i.imgur.com/xiUZX5l.png';
 var BIO_PHOTO  = 'https://i.imgur.com/wvRoFS1.png';
@@ -1055,7 +1081,7 @@ function setNav(el) {
 }
 window.addEventListener('scroll', function(){
   var sy = window.scrollY + 120;
-  ['home','bio-wrap','svc-wrap','calendario','resenas'].forEach(function(id){
+  ['home','bio-wrap','svc-wrap','galeria-wrap','calendario','resenas'].forEach(function(id){
     var el = document.getElementById(id); if (!el) return;
     if (sy >= el.offsetTop && sy < el.offsetTop + el.offsetHeight) {
       document.querySelectorAll('nav a').forEach(function(a){
